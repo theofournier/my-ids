@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:my_ids/theme.dart' as Theme;
+
+import 'generated/i18n.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,9 +11,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      localizationsDelegates: [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      supportedLocales: S.delegate.supportedLocales,
       theme: Theme.themeData,
-      home: Center(child: Text("MY IDs"),),
+      onGenerateTitle: (ctx) => S.of(ctx).appTitle,
+      home: Center(child: Text(S.of(context).appTitle),),
     );
   }
 }
