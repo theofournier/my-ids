@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:my_ids/providers/bottom_bar_provider.dart';
+import 'package:my_ids/providers/ids_provider.dart';
 import 'package:my_ids/screens/home/home_screen.dart';
 import 'package:my_ids/screens/splash/splash_screen.dart';
 import 'package:my_ids/theme.dart' as Theme;
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: BottomBarProvider()),
+        ChangeNotifierProvider.value(value: IdsProvider()),
       ],
       child: GestureDetector(
         onTap: () {
