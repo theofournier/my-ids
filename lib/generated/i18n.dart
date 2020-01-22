@@ -22,6 +22,10 @@ class S implements WidgetsLocalizations {
   TextDirection get textDirection => TextDirection.ltr;
 
   String get appTitle => "My IDs";
+  String get bottomBarIDs => "IDs";
+  String get bottomBarProfile => "Profile";
+  String get homeText => "Mes IDs vous permet de sauvegarder en local sur votre portable des identifiants, des mots de passes ainsi que des notes et de leur assigner une couleur";
+  String get homeTitle => "Welcome on My IDs";
 }
 
 class $en extends S {
@@ -34,6 +38,14 @@ class $fr extends S {
   @override
   TextDirection get textDirection => TextDirection.ltr;
 
+  @override
+  String get homeTitle => "Bienvenue sur Mes IDs";
+  @override
+  String get bottomBarProfile => "Profil";
+  @override
+  String get homeText => "Mes IDs vous permet de sauvegarder en local sur votre portable des identifiants, des mots de passes ainsi que des notes et de leur assigner une couleur";
+  @override
+  String get bottomBarIDs => "IDs";
   @override
   String get appTitle => "Mes IDs";
 }

@@ -1,3 +1,7 @@
 {
-  "appTitle": "My IDs"
+  "appTitle": "My IDs",
+  "homeTitle": "Welcome on My IDs",
+  "homeText": "Mes IDs vous permet de sauvegarder en local sur votre portable des identifiants, des mots de passes ainsi que des notes et de leur assigner une couleur",
+  "bottomBarIDs": "IDs",
+  "bottomBarProfile": "Profile"
 }
