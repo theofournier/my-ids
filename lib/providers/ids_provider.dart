@@ -11,7 +11,7 @@ class IdsProvider with ChangeNotifier {
   }
 
   Future<void> fetchIds() async {
-    await Utils.sleep(2);
+    await Utils.sleep(1);
     _ids = DataExample.ids;
     notifyListeners();
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_ids/generated/i18n.dart';
 import 'package:my_ids/providers/bottom_bar_provider.dart';
+import 'package:my_ids/screens/ids/ids_screen.dart';
 import 'package:provider/provider.dart';
 
 class DefaultBottomBarItem {
@@ -20,7 +21,7 @@ class DefaultBottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     List<DefaultBottomBarItem> items = [
       DefaultBottomBarItem(
-        routeName: "/ids",
+        routeName: IdsScreen.routeName,
         iconData: Icons.list,
         text: S.of(context).bottomBarIDs,
       ),

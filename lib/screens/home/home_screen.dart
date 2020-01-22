@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_ids/generated/i18n.dart';
 import 'package:my_ids/providers/bottom_bar_provider.dart';
 import 'package:my_ids/screens/home/widgets/default_bottom_bar.dart';
+import 'package:my_ids/screens/ids/ids_screen.dart';
 import 'package:my_ids/widgets/rounded_line.dart';
 import 'package:provider/provider.dart';
 
@@ -10,8 +11,8 @@ class HomeScreen extends StatelessWidget {
 
   Widget displayedWidget(BuildContext context, String routeName) {
     switch (routeName) {
-      case "/ids":
-        return Text("IDS");
+      case IdsScreen.routeName:
+        return IdsScreen();
       case "/profile":
         return Text("SETTINGS");
       case HomeScreen.routeName:
