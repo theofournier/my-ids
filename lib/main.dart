@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:my_ids/screens/splash/splash_screen.dart';
 import 'package:my_ids/theme.dart' as Theme;
 import 'package:my_ids/routes.dart' as Routes;
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: Theme.themeData,
       onGenerateTitle: (ctx) => S.of(ctx).appTitle,
       routes: Routes.routes,
-      home: Center(child: Text(S.of(context).appTitle),),
+      initialRoute: SplashScreen.routeName,
     );
   }
 }
