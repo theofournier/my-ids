@@ -20,7 +20,8 @@ class _IdsScreenState extends State<IdsScreen> {
   void initState() {
     super.initState();
     _searchController.addListener(() {
-      Provider.of<IdsProvider>(context, listen: false).searchIds(_searchController.text);
+      Provider.of<IdsProvider>(context, listen: false)
+          .searchIds(_searchController.text);
     });
   }
 
@@ -47,22 +48,28 @@ class _IdsScreenState extends State<IdsScreen> {
               controller: _searchController,
             ),
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           FutureBuilder(
             future: _refreshIds(context),
             builder: (ctx, snapshot) {
-              if(snapshot.connectionState == ConnectionState.waiting) {
+              if (Provider.of<IdsProvider>(context, listen: false)
+                      .filteredIds
+                      .isEmpty &&
+                  snapshot.connectionState == ConnectionState.waiting) {
                 return Center(
                   child: CircularProgressIndicator(),
                 );
               }
-              return Expanded (
+              return Expanded(
                 child: RefreshIndicator(
                   onRefresh: () => _refreshIds(context),
                   child: Consumer<IdsProvider>(
                     builder: (ctx, idsProvider, _) {
                       return ListView.separated(
-                        padding: const EdgeInsets.only(right: 30, left: 30, bottom: 20),
+                        padding: const EdgeInsets.only(
+                            right: 30, left: 30, bottom: 20),
                         separatorBuilder: (ctx, index) => SizedBox(
                           height: 10,
                         ),
@@ -85,6 +92,4 @@ class _IdsScreenState extends State<IdsScreen> {
       ),
     );
   }
-
-
 }
