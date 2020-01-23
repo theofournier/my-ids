@@ -26,4 +26,19 @@ class AppColors {
   };
 
   static const Color greyBackground = const Color(0xFFF5F5F5);
+
+  static const List<Color> idColors = const [
+    const Color(0xFFCD6155),
+    const Color(0xFF6e5773),
+    const Color(0xFF6a8caf),
+    const Color(0xFF71a95a),
+    const Color(0xFF36b5b0),
+    const Color(0xFFe3b04b),
+    const Color(0xFFfe9801),
+    const Color(0xFFee8572),
+    const Color(0xFFa35638),
+    const Color(0xFFAAB7B8),
+    const Color(0xFF5D6D7E),
+
+  ];
 }
