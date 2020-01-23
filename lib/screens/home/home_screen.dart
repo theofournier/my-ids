@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_ids/generated/i18n.dart';
+import 'package:my_ids/generated/l10n.dart';
 import 'package:my_ids/providers/bottom_bar_provider.dart';
 import 'package:my_ids/screens/home/widgets/default_bottom_bar.dart';
 import 'package:my_ids/screens/ids/ids_screen.dart';

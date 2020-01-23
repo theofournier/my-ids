@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_ids/generated/i18n.dart';
+import 'package:my_ids/generated/l10n.dart';
 
 class SplashScreen extends StatelessWidget {
   static const routeName = "/splash";

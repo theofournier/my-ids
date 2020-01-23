@@ -8,7 +8,7 @@ import 'package:my_ids/theme.dart' as Theme;
 import 'package:my_ids/routes.dart' as Routes;
 import 'package:provider/provider.dart';
 
-import 'generated/i18n.dart';
+import 'generated/l10n.dart';
 
 void main() => runApp(MyApp());
 

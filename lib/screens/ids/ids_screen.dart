@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_ids/generated/i18n.dart';
+import 'package:my_ids/generated/l10n.dart';
 import 'package:my_ids/models/id_model.dart';
 import 'package:my_ids/providers/ids_provider.dart';
 import 'package:my_ids/screens/ids/widgets/ids_item.dart';
