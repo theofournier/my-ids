@@ -8,5 +8,14 @@
   "profile": "Profil",
   "settings": "Paramètres",
   "editId": "Modifier ID",
-  "copied": "Copié !"
+  "copied": "Copié !",
+  "newId": "Nouvel ID",
+  "title": "Titre",
+  "name": "Nom",
+  "id": "Id",
+  "password": "Mot de passe",
+  "note": "Note",
+  "color": "Couleur",
+  "ok": "Okay",
+  "cancel": "Annuler"
 }

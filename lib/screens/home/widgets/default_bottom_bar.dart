@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_ids/generated/l10n.dart';
 import 'package:my_ids/providers/bottom_bar_provider.dart';
+import 'package:my_ids/screens/edit_id/edit_id_screen.dart';
 import 'package:my_ids/screens/ids/ids_screen.dart';
 import 'package:my_ids/screens/profile/profile_screen.dart';
 import 'package:provider/provider.dart';
@@ -56,7 +57,7 @@ class DefaultBottomBar extends StatelessWidget {
   Widget _buildMiddleTabItem(BuildContext context) {
     return Flexible(
       child: InkWell(
-        onTap: () => print("ADD ID"),
+        onTap: () => Navigator.of(context).pushNamed(EditIdScreen.routeName),
         child: Container(
           width: 40,
           height: 40,

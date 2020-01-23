@@ -24,12 +24,21 @@ class MessageLookup extends MessageLookupByLibrary {
     "appTitle" : MessageLookupByLibrary.simpleMessage("My IDs"),
     "bottomBarIDs" : MessageLookupByLibrary.simpleMessage("IDs"),
     "bottomBarProfile" : MessageLookupByLibrary.simpleMessage("Profile"),
+    "cancel" : MessageLookupByLibrary.simpleMessage("Cancel"),
+    "color" : MessageLookupByLibrary.simpleMessage("Color"),
     "copied" : MessageLookupByLibrary.simpleMessage("Copied!"),
     "editId" : MessageLookupByLibrary.simpleMessage("Edit ID"),
     "homeText" : MessageLookupByLibrary.simpleMessage("Mes IDs vous permet de sauvegarder en local sur votre portable des identifiants, des mots de passes ainsi que des notes et de leur assigner une couleur"),
     "homeTitle" : MessageLookupByLibrary.simpleMessage("Welcome on My IDs"),
+    "id" : MessageLookupByLibrary.simpleMessage("Id"),
+    "name" : MessageLookupByLibrary.simpleMessage("Name"),
+    "newId" : MessageLookupByLibrary.simpleMessage("New ID"),
+    "note" : MessageLookupByLibrary.simpleMessage("Note"),
+    "ok" : MessageLookupByLibrary.simpleMessage("Okay"),
+    "password" : MessageLookupByLibrary.simpleMessage("Password"),
     "profile" : MessageLookupByLibrary.simpleMessage("Profile"),
     "searchId" : MessageLookupByLibrary.simpleMessage("Search an ID"),
-    "settings" : MessageLookupByLibrary.simpleMessage("Settings")
+    "settings" : MessageLookupByLibrary.simpleMessage("Settings"),
+    "title" : MessageLookupByLibrary.simpleMessage("Title")
   };
 }

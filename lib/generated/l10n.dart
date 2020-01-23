@@ -118,6 +118,87 @@ class S {
       args: [],
     );
   }
+
+  String get newId {
+    return Intl.message(
+      'New ID',
+      name: 'newId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get title {
+    return Intl.message(
+      'Title',
+      name: 'title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get id {
+    return Intl.message(
+      'Id',
+      name: 'id',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get note {
+    return Intl.message(
+      'Note',
+      name: 'note',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get color {
+    return Intl.message(
+      'Color',
+      name: 'color',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get ok {
+    return Intl.message(
+      'Okay',
+      name: 'ok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
