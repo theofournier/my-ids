@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_ids/generated/l10n.dart';
+import 'package:my_ids/screens/settings/settings_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   static const routeName = "/profile";
@@ -23,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             SizedBox(height: 40,),
             ListTile(
-              onTap: () => print("SETTINGS"),
+              onTap: () => Navigator.of(context).pushNamed(SettingsScreen.routeName),
               leading: Icon(Icons.settings, color: Theme.of(context).primaryColor,),
               contentPadding: const EdgeInsets.all(0),
               title: Text(
