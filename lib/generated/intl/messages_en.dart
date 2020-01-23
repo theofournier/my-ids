@@ -24,6 +24,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "appTitle" : MessageLookupByLibrary.simpleMessage("My IDs"),
     "bottomBarIDs" : MessageLookupByLibrary.simpleMessage("IDs"),
     "bottomBarProfile" : MessageLookupByLibrary.simpleMessage("Profile"),
+    "copied" : MessageLookupByLibrary.simpleMessage("Copied!"),
+    "editId" : MessageLookupByLibrary.simpleMessage("Edit ID"),
     "homeText" : MessageLookupByLibrary.simpleMessage("Mes IDs vous permet de sauvegarder en local sur votre portable des identifiants, des mots de passes ainsi que des notes et de leur assigner une couleur"),
     "homeTitle" : MessageLookupByLibrary.simpleMessage("Welcome on My IDs"),
     "profile" : MessageLookupByLibrary.simpleMessage("Profile"),

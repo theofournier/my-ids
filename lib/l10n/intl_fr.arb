@@ -6,5 +6,7 @@
   "bottomBarProfile": "Profil",
   "searchId": "Rechercher un ID",
   "profile": "Profil",
-  "settings": "Paramètres"
+  "settings": "Paramètres",
+  "editId": "Modifier ID",
+  "copied": "Copié !"
 }

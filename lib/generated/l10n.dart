@@ -100,6 +100,24 @@ class S {
       args: [],
     );
   }
+
+  String get editId {
+    return Intl.message(
+      'Edit ID',
+      name: 'editId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get copied {
+    return Intl.message(
+      'Copied!',
+      name: 'copied',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -11,16 +11,19 @@ class DataExample {
     updatedAt: DateTime.parse("2020-01-21T15:40:00+0000"),
     items: [
       IdItemModel(
+        uid: "idItem1",
         name: "Nom 1",
         id: "Id 1",
         password: "Password 1",
         note: "Note 1"
       ),
       IdItemModel(
+        uid: "idItem2",
           name: "Nom 2",
           id: "Id 2",
       ),
       IdItemModel(
+          uid: "idItem3",
           password: "Password 3",
           note: "Note 3"
       ),
@@ -34,16 +37,19 @@ class DataExample {
     updatedAt: DateTime.parse("2020-01-22T15:40:00+0000"),
     items: [
       IdItemModel(
+          uid: "idItem1",
           name: "Nom 1",
           id: "Id 1",
           password: "Password 1",
           note: "Note 1"
       ),
       IdItemModel(
+        uid: "idItem2",
         name: "Nom 2",
         id: "Id 2",
       ),
       IdItemModel(
+          uid: "idItem3",
           password: "Password 3",
           note: "Note 3"
       ),
@@ -57,16 +63,19 @@ class DataExample {
     updatedAt: DateTime.parse("2020-01-22T15:40:00+0000"),
     items: [
       IdItemModel(
+          uid: "idItem1",
           name: "Nom 1",
           id: "Id 1",
           password: "Password 1",
           note: "Note 1"
       ),
       IdItemModel(
+        uid: "idItem2",
         name: "Nom 2",
         id: "Id 2",
       ),
       IdItemModel(
+          uid: "idItem3",
           password: "Password 3",
           note: "Note 3"
       ),
@@ -80,16 +89,19 @@ class DataExample {
     updatedAt: DateTime.parse("2020-01-22T15:40:00+0000"),
     items: [
       IdItemModel(
+          uid: "idItem1",
           name: "Nom 1",
           id: "Id 1",
           password: "Password 1",
           note: "Note 1"
       ),
       IdItemModel(
+        uid: "idItem2",
         name: "Nom 2",
         id: "Id 2",
       ),
       IdItemModel(
+          uid: "idItem3",
           password: "Password 3",
           note: "Note 3"
       ),

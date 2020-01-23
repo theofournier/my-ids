@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:my_ids/providers/bottom_bar_provider.dart';
 import 'package:my_ids/providers/ids_provider.dart';
 import 'package:my_ids/screens/home/home_screen.dart';
+import 'package:my_ids/screens/id/id_screen.dart';
 import 'package:my_ids/screens/splash/splash_screen.dart';
 import 'package:my_ids/theme.dart' as Theme;
 import 'package:my_ids/routes.dart' as Routes;

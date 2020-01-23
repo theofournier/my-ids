@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 class BottomBarProvider with ChangeNotifier {
-  String _currentRouteName = "/profile";
+  String _currentRouteName = "/ids";
 
   get currentRouteName{
     return this._currentRouteName;

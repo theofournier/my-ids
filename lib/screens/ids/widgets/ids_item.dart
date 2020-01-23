@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:my_ids/models/id_model.dart';
+import 'package:my_ids/screens/id/id_screen.dart';
 import 'package:my_ids/theme.dart';
 import 'package:my_ids/utils/hex_color.dart';
 
@@ -15,7 +16,7 @@ class IdsItem extends StatelessWidget {
 
     return GestureDetector(
       key: key,
-      onTap: () => print(data),
+      onTap: () => Navigator.of(context).pushNamed(IdScreen.routeName, arguments: data),
       child: Card(
         elevation: 2,
         margin: const EdgeInsets.all(0),
