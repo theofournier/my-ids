@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_ids/generated/l10n.dart';
 import 'package:my_ids/providers/bottom_bar_provider.dart';
 import 'package:my_ids/screens/ids/ids_screen.dart';
+import 'package:my_ids/screens/profile/profile_screen.dart';
 import 'package:provider/provider.dart';
 
 class DefaultBottomBarItem {
@@ -26,7 +27,7 @@ class DefaultBottomBar extends StatelessWidget {
         text: S.of(context).bottomBarIDs,
       ),
       DefaultBottomBarItem(
-        routeName: "/profile",
+        routeName: ProfileScreen.routeName,
         iconData: Icons.person_outline,
         text: S.of(context).bottomBarProfile,
       ),
