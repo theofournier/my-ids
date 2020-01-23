@@ -15,20 +15,13 @@ class IdsScreen extends StatefulWidget {
 
 class _IdsScreenState extends State<IdsScreen> {
   TextEditingController _searchController = TextEditingController();
-  String _searchText = "";
 
   @override
   void initState() {
     super.initState();
     _searchController.addListener(() {
-      if (_searchController.text.isEmpty) {
-        _searchText = "";
-      } else {
-        _searchText = _searchController.text;
-      }
-      //TODO filter
+      Provider.of<IdsProvider>(context, listen: false).searchIds(_searchController.text);
     });
-    //TODO filter
   }
 
   @override
@@ -73,9 +66,9 @@ class _IdsScreenState extends State<IdsScreen> {
                         separatorBuilder: (ctx, index) => SizedBox(
                           height: 10,
                         ),
-                        itemCount: idsProvider.ids.length,
+                        itemCount: idsProvider.filteredIds.length,
                         itemBuilder: (ctx, index) {
-                          IdModel item = idsProvider.ids[index];
+                          IdModel item = idsProvider.filteredIds[index];
                           return IdsItem(
                             key: Key(item.uid),
                             data: item,
