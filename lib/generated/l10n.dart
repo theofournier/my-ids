@@ -182,6 +182,15 @@ class S {
     );
   }
 
+  String get noColor {
+    return Intl.message(
+      'No color',
+      name: 'noColor',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get ok {
     return Intl.message(
       'Okay',

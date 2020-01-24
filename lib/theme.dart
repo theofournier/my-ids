@@ -31,6 +31,7 @@ class AppColors {
   static const Color greyBackgroundDark = const Color(0xFFECF0F1);
 
   static const List<Color> idColors = const [
+    const Color(0xFF5ea7a2),
     const Color(0xFFCD6155),
     const Color(0xFF6e5773),
     const Color(0xFF6a8caf),

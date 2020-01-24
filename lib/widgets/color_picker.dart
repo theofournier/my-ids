@@ -29,6 +29,11 @@ class _ColorPickerState extends State<ColorPicker> {
       title: Text(S.of(context).color),
       actions: <Widget>[
         FlatButton(
+          onPressed: () => Navigator.of(context).pop(Colors.transparent),
+          textColor: Colors.black,
+          child: Text(S.of(context).noColor),
+        ),
+        FlatButton(
           onPressed: () => Navigator.of(context).pop(),
           textColor: Theme.of(context).errorColor,
           child: Text(S.of(context).cancel),

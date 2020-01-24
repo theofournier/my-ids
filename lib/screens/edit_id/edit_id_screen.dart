@@ -6,6 +6,7 @@ import 'package:my_ids/models/id_model.dart';
 import 'package:my_ids/screens/edit_id/widgets/color_widget.dart';
 import 'package:my_ids/screens/edit_id/widgets/id_item.dart';
 import 'package:my_ids/screens/edit_id/widgets/note_widget.dart';
+import 'package:my_ids/theme.dart';
 import 'package:my_ids/utils/utils.dart';
 import 'package:my_ids/widgets/default_textformfield.dart';
 import 'package:uuid/uuid.dart';
@@ -18,7 +19,7 @@ class EditIdScreen extends StatefulWidget {
 }
 
 class _EditIdScreenState extends State<EditIdScreen> {
-  IdModel _idModel = IdModel();
+  IdModel _idModel = IdModel(hexColor: Utils.getHexFromColor(AppColors.idColors[0]));
 
   final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;

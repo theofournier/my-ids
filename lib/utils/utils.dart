@@ -6,7 +6,11 @@ class Utils {
   }
 
   static String getHexFromColor(Color color){
-    return color.value.toRadixString(16).substring(2, 8);
+    try{
+      return color.value.toRadixString(16).substring(2, 8);
+    } catch (e){
+      return null;
+    }
   }
 
 }

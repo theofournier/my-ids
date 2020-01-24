@@ -21,14 +21,13 @@ class ColorWidget extends StatelessWidget {
           builder: (ctx) {
             return ColorPicker(
               colors: AppColors.idColors,
-              initColor: hexColor != null
-                  ? HexColor(hexColor)
-                  : null,
+              initColor: hexColor != null ? HexColor(hexColor) : null,
             );
           },
         );
-        if(color != null)
+        if (color != null) {
           callback(Utils.getHexFromColor(color));
+        }
       },
       child: Card(
         elevation: 2,
@@ -36,9 +35,7 @@ class ColorWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
-        color: hexColor != null
-            ? HexColor(hexColor)
-            : Colors.white,
+        color: hexColor != null ? HexColor(hexColor) : Colors.white,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
           child: Row(
@@ -46,18 +43,18 @@ class ColorWidget extends StatelessWidget {
             children: <Widget>[
               hexColor == null
                   ? Text(
-                S.of(context).color,
-                style: TextStyle(
-                  fontSize: 16,
-                ),
-              )
+                      S.of(context).color,
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    )
                   : Text(
-                "#${hexColor.toUpperCase()}",
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                ),
-              ),
+                      "#${hexColor.toUpperCase()}",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
               Icon(
                 Icons.edit,
                 color: hexColor != null ? Colors.white : Colors.black,
@@ -69,4 +66,3 @@ class ColorWidget extends StatelessWidget {
     );
   }
 }
-

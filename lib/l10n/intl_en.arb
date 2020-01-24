@@ -16,6 +16,7 @@
   "password": "Password",
   "note": "Note",
   "color": "Color",
+  "noColor": "No color",
   "ok": "Okay",
   "cancel": "Cancel",
   "save": "Save",

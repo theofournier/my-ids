@@ -37,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "name" : MessageLookupByLibrary.simpleMessage("Nom"),
     "newId" : MessageLookupByLibrary.simpleMessage("Nouvel ID"),
     "no" : MessageLookupByLibrary.simpleMessage("Non"),
+    "noColor" : MessageLookupByLibrary.simpleMessage("Sans couleur"),
     "note" : MessageLookupByLibrary.simpleMessage("Note"),
     "ok" : MessageLookupByLibrary.simpleMessage("Okay"),
     "password" : MessageLookupByLibrary.simpleMessage("Mot de passe"),

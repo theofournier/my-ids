@@ -16,6 +16,7 @@
   "password": "Mot de passe",
   "note": "Note",
   "color": "Couleur",
+  "noColor": "Sans couleur",
   "ok": "Okay",
   "cancel": "Annuler",
   "save": "Sauvegarder",
