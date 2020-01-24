@@ -4,6 +4,7 @@ import 'package:my_ids/models/id_model.dart';
 import 'package:my_ids/screens/edit_id/widgets/color_widget.dart';
 import 'package:my_ids/screens/edit_id/widgets/note_widget.dart';
 import 'package:my_ids/utils/utils.dart';
+import 'package:my_ids/widgets/default_textformfield.dart';
 
 class EditIdScreen extends StatefulWidget {
   static const routeName = "/edit-id";
@@ -28,8 +29,9 @@ class _EditIdScreenState extends State<EditIdScreen> {
     });
     //TODO save id
     await Utils.sleep(1);
-    print(_idModel.hexColor);
+    print(_idModel.title);
     print(_idModel.note);
+    print(_idModel.hexColor);
     setState(() {
       _isLoading = false;
     });
@@ -77,7 +79,17 @@ class _EditIdScreenState extends State<EditIdScreen> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        Text("TITLE"),
+                        DefaultTextFormField(
+                          labelText: S.of(context).title,
+                          keyboardType: TextInputType.text,
+                          initialValue: _idModel.title,
+                          onSaved: (value) => setState(() {
+                            _idModel.title = value;
+                          }),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
                         Text("IDS"),
                         NoteWidget(
                           value: _idModel.note,
@@ -85,7 +97,9 @@ class _EditIdScreenState extends State<EditIdScreen> {
                             _idModel.note = value;
                           }),
                         ),
-                        SizedBox(height: 10,),
+                        SizedBox(
+                          height: 10,
+                        ),
                         ColorWidget(
                           hexColor: _idModel.hexColor,
                           callback: (String hexColor) => setState(() {
