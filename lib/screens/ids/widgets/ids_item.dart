@@ -23,7 +23,7 @@ class IdsItem extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
-        color: data.hexColor != null ? HexColor(data.hexColor) : AppColors.greyBackground,
+        color: data.hexColor != null ? HexColor(data.hexColor) : AppColors.greyBackgroundDark,
         child: Row(
           children: <Widget>[
             Expanded(

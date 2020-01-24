@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).backgroundColor,
       bottomNavigationBar: DefaultBottomBar(),
       body: Consumer<BottomBarProvider>(
         builder: (ctx, bottomBar, ch) {

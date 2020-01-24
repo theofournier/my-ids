@@ -27,10 +27,10 @@ class IdScreen extends StatelessWidget {
     data = ModalRoute.of(context).settings.arguments;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).backgroundColor,
         iconTheme: IconThemeData(color: Colors.black),
         actions: <Widget>[
           IconButton(

@@ -7,6 +7,7 @@ final ThemeData themeData = new ThemeData(
   primaryColorLight: const Color(0xFF5ea7a2),
   accentColor: const Color(0xFFffba5a),
   errorColor: const Color(0xFFAF6566),
+  backgroundColor: AppColors.greyBackgroundLight,
   fontFamily: 'OpenSans',
 );
 
@@ -25,7 +26,9 @@ class AppColors {
     900: const Color(0xFF2c7873)
   };
 
+  static const Color greyBackgroundLight = const Color(0xFFFBFCFC);
   static const Color greyBackground = const Color(0xFFF5F5F5);
+  static const Color greyBackgroundDark = const Color(0xFFECF0F1);
 
   static const List<Color> idColors = const [
     const Color(0xFFCD6155),
