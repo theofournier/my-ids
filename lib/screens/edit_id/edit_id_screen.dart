@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_ids/generated/l10n.dart';
 import 'package:my_ids/models/id_model.dart';
 import 'package:my_ids/screens/edit_id/widgets/color_widget.dart';
+import 'package:my_ids/screens/edit_id/widgets/note_widget.dart';
 import 'package:my_ids/utils/utils.dart';
 
 class EditIdScreen extends StatefulWidget {
@@ -27,7 +28,8 @@ class _EditIdScreenState extends State<EditIdScreen> {
     });
     //TODO save id
     await Utils.sleep(1);
-    print(_idModel);
+    print(_idModel.hexColor);
+    print(_idModel.note);
     setState(() {
       _isLoading = false;
     });
@@ -47,7 +49,10 @@ class _EditIdScreenState extends State<EditIdScreen> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.done, color: Theme.of(context).primaryColor,),
+            icon: Icon(
+              Icons.done,
+              color: Theme.of(context).primaryColor,
+            ),
             tooltip: S.of(context).save,
             onPressed: () => _submit(),
           ),
@@ -74,7 +79,13 @@ class _EditIdScreenState extends State<EditIdScreen> {
                       children: <Widget>[
                         Text("TITLE"),
                         Text("IDS"),
-                        Text("NOTE"),
+                        NoteWidget(
+                          value: _idModel.note,
+                          onSaved: (value) => setState(() {
+                            _idModel.note = value;
+                          }),
+                        ),
+                        SizedBox(height: 10,),
                         ColorWidget(
                           hexColor: _idModel.hexColor,
                           callback: (String hexColor) => setState(() {

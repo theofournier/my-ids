@@ -30,7 +30,7 @@ class ColorWidget extends StatelessWidget {
         callback(Utils.getHexFromColor(color));
       },
       child: Card(
-        elevation: 3,
+        elevation: 2,
         margin: const EdgeInsets.all(0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
