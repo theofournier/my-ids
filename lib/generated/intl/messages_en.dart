@@ -37,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "ok" : MessageLookupByLibrary.simpleMessage("Okay"),
     "password" : MessageLookupByLibrary.simpleMessage("Password"),
     "profile" : MessageLookupByLibrary.simpleMessage("Profile"),
+    "save" : MessageLookupByLibrary.simpleMessage("Save"),
     "searchId" : MessageLookupByLibrary.simpleMessage("Search an ID"),
     "settings" : MessageLookupByLibrary.simpleMessage("Settings"),
     "title" : MessageLookupByLibrary.simpleMessage("Title")

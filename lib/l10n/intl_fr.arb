@@ -17,5 +17,6 @@
   "note": "Note",
   "color": "Couleur",
   "ok": "Okay",
-  "cancel": "Annuler"
+  "cancel": "Annuler",
+  "save": "Sauvegarder"
 }
