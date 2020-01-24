@@ -117,7 +117,7 @@ class IdScreen extends StatelessWidget {
                   ),
                   color: HexColor(data.hexColor),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 25),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
                     child: Text(
                       data.hexColor.toUpperCase(),
                       style: TextStyle(
