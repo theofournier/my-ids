@@ -18,5 +18,12 @@
   "color": "Color",
   "ok": "Okay",
   "cancel": "Cancel",
-  "save": "Save"
+  "save": "Save",
+  "yes": "Yes",
+  "no": "No",
+  "undo": "Undo",
+  "addIdItem": "Add ID item",
+  "confirmationDialogTitle": "Confirmation",
+  "removeIdConfirmation": "Do you want remove this ID?",
+  "idRemoved": "ID removed"
 }

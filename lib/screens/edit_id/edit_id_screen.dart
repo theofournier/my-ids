@@ -1,10 +1,14 @@
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:my_ids/generated/l10n.dart';
+import 'package:my_ids/models/id_item_model.dart';
 import 'package:my_ids/models/id_model.dart';
 import 'package:my_ids/screens/edit_id/widgets/color_widget.dart';
+import 'package:my_ids/screens/edit_id/widgets/id_item.dart';
 import 'package:my_ids/screens/edit_id/widgets/note_widget.dart';
 import 'package:my_ids/utils/utils.dart';
 import 'package:my_ids/widgets/default_textformfield.dart';
+import 'package:uuid/uuid.dart';
 
 class EditIdScreen extends StatefulWidget {
   static const routeName = "/edit-id";
@@ -29,9 +33,17 @@ class _EditIdScreenState extends State<EditIdScreen> {
     });
     //TODO save id
     await Utils.sleep(1);
-    print(_idModel.title);
-    print(_idModel.note);
-    print(_idModel.hexColor);
+    print("TITLE ${_idModel.title}");
+    print("NOTE ${_idModel.note}");
+    print("HEXCOLOR ${_idModel.hexColor}");
+    if (_idModel.items != null && _idModel.items.isNotEmpty) {
+      for (int i = 0; i < _idModel.items.length; i++) {
+        print("$i NAME ${_idModel.items[i].name}");
+        print("$i ID ${_idModel.items[i].id}");
+        print("$i PASS ${_idModel.items[i].password}");
+        print("$i NOTE ${_idModel.items[i].note}");
+      }
+    }
     setState(() {
       _isLoading = false;
     });
@@ -66,7 +78,6 @@ class _EditIdScreenState extends State<EditIdScreen> {
                 const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 if (_isLoading)
                   Center(
@@ -76,7 +87,7 @@ class _EditIdScreenState extends State<EditIdScreen> {
                   Form(
                     key: _formKey,
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         DefaultTextFormField(
@@ -90,12 +101,27 @@ class _EditIdScreenState extends State<EditIdScreen> {
                         SizedBox(
                           height: 10,
                         ),
-                        Text("IDS"),
+                        _buildIdItemList(),
+                        IconButton(
+                          icon: Icon(
+                            Icons.add_circle_outline,
+                            color: Theme.of(context).accentColor,
+                          ),
+                          onPressed: () {
+                            if (_idModel.items == null) {
+                              _idModel.items = [];
+                            }
+                            setState(() {
+                              _idModel.items.add(IdItemModel(uid: Uuid().v4()));
+                            });
+                          },
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
                         NoteWidget(
                           value: _idModel.note,
-                          onSaved: (value) => setState(() {
-                            _idModel.note = value;
-                          }),
+                          onSaved: (value) => _idModel.note = value,
                         ),
                         SizedBox(
                           height: 10,
@@ -113,5 +139,30 @@ class _EditIdScreenState extends State<EditIdScreen> {
             )),
       ),
     );
+  }
+
+  Widget _buildIdItemList() {
+    return _idModel.items != null && _idModel.items.isNotEmpty
+        ? Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: _idModel.items
+                .map(
+                  (item) => IdItem(
+                    key: Key(item.uid ?? Uuid().v4()),
+                    idItemModel: item,
+                    onDelete: () {
+                      setState(() {
+                        _idModel.items.remove(item);
+                      });
+                    },
+                  ),
+                )
+                .toList(),
+          )
+        : Text(
+            S.of(context).addIdItem,
+            style: TextStyle(color: Theme.of(context).accentColor),
+          );
   }
 }

@@ -208,6 +208,69 @@ class S {
       args: [],
     );
   }
+
+  String get yes {
+    return Intl.message(
+      'Yes',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get no {
+    return Intl.message(
+      'No',
+      name: 'no',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get undo {
+    return Intl.message(
+      'Undo',
+      name: 'undo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get addIdItem {
+    return Intl.message(
+      'Add ID item',
+      name: 'addIdItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get confirmationDialogTitle {
+    return Intl.message(
+      'Confirmation',
+      name: 'confirmationDialogTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get removeIdConfirmation {
+    return Intl.message(
+      'Do you want remove this ID?',
+      name: 'removeIdConfirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get idRemoved {
+    return Intl.message(
+      'ID removed',
+      name: 'idRemoved',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

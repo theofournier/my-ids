@@ -1,9 +1,9 @@
 class IdItemModel {
   final String uid;
-  final String name;
-  final String id;
-  final String password;
-  final String note;
+  String name;
+  String id;
+  String password;
+  String note;
 
   IdItemModel({
     this.uid,

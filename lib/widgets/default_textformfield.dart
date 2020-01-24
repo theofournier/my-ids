@@ -18,6 +18,7 @@ class DefaultTextFormField extends StatelessWidget {
   final TextCapitalization textCapitalization;
   final int minLines;
   final int maxLines;
+  final double textSize;
 
   DefaultTextFormField({
     Key key,
@@ -38,6 +39,7 @@ class DefaultTextFormField extends StatelessWidget {
     this.textCapitalization = TextCapitalization.none,
     this.minLines = 1,
     this.maxLines,
+    this.textSize = 16,
   }) : super(key: key);
 
   @override
@@ -55,8 +57,10 @@ class DefaultTextFormField extends StatelessWidget {
       initialValue: initialValue,
       minLines: minLines,
       maxLines: maxLines,
+
       decoration: InputDecoration(
         labelText: labelText,
+        labelStyle: TextStyle(fontSize: textSize),
         alignLabelWithHint: true,
         prefixIcon: prefixIcon != null
             ? Icon(
@@ -65,7 +69,10 @@ class DefaultTextFormField extends StatelessWidget {
             : null,
         suffixIcon: _buildSuffixIcon(context),
       ),
-      style: const TextStyle(color: Colors.black),
+      style: TextStyle(
+        color: Colors.black,
+        fontSize: textSize,
+      ),
       textCapitalization: textCapitalization,
     );
   }

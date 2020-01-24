@@ -21,25 +21,32 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "addIdItem" : MessageLookupByLibrary.simpleMessage("Add ID item"),
     "appTitle" : MessageLookupByLibrary.simpleMessage("My IDs"),
     "bottomBarIDs" : MessageLookupByLibrary.simpleMessage("IDs"),
     "bottomBarProfile" : MessageLookupByLibrary.simpleMessage("Profile"),
     "cancel" : MessageLookupByLibrary.simpleMessage("Cancel"),
     "color" : MessageLookupByLibrary.simpleMessage("Color"),
+    "confirmationDialogTitle" : MessageLookupByLibrary.simpleMessage("Confirmation"),
     "copied" : MessageLookupByLibrary.simpleMessage("Copied!"),
     "editId" : MessageLookupByLibrary.simpleMessage("Edit ID"),
     "homeText" : MessageLookupByLibrary.simpleMessage("Mes IDs vous permet de sauvegarder en local sur votre portable des identifiants, des mots de passes ainsi que des notes et de leur assigner une couleur"),
     "homeTitle" : MessageLookupByLibrary.simpleMessage("Welcome on My IDs"),
     "id" : MessageLookupByLibrary.simpleMessage("Id"),
+    "idRemoved" : MessageLookupByLibrary.simpleMessage("ID removed"),
     "name" : MessageLookupByLibrary.simpleMessage("Name"),
     "newId" : MessageLookupByLibrary.simpleMessage("New ID"),
+    "no" : MessageLookupByLibrary.simpleMessage("No"),
     "note" : MessageLookupByLibrary.simpleMessage("Note"),
     "ok" : MessageLookupByLibrary.simpleMessage("Okay"),
     "password" : MessageLookupByLibrary.simpleMessage("Password"),
     "profile" : MessageLookupByLibrary.simpleMessage("Profile"),
+    "removeIdConfirmation" : MessageLookupByLibrary.simpleMessage("Do you want remove this ID?"),
     "save" : MessageLookupByLibrary.simpleMessage("Save"),
     "searchId" : MessageLookupByLibrary.simpleMessage("Search an ID"),
     "settings" : MessageLookupByLibrary.simpleMessage("Settings"),
-    "title" : MessageLookupByLibrary.simpleMessage("Title")
+    "title" : MessageLookupByLibrary.simpleMessage("Title"),
+    "undo" : MessageLookupByLibrary.simpleMessage("Undo"),
+    "yes" : MessageLookupByLibrary.simpleMessage("Yes")
   };
 }

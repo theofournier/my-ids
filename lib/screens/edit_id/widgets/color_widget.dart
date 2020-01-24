@@ -27,7 +27,8 @@ class ColorWidget extends StatelessWidget {
             );
           },
         );
-        callback(Utils.getHexFromColor(color));
+        if(color != null)
+          callback(Utils.getHexFromColor(color));
       },
       child: Card(
         elevation: 2,
@@ -47,7 +48,7 @@ class ColorWidget extends StatelessWidget {
                   ? Text(
                 S.of(context).color,
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 16,
                 ),
               )
                   : Text(

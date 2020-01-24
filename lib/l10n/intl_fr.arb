@@ -18,5 +18,12 @@
   "color": "Couleur",
   "ok": "Okay",
   "cancel": "Annuler",
-  "save": "Sauvegarder"
+  "save": "Sauvegarder",
+  "yes": "Oui",
+  "no": "Non",
+  "undo": "Annuler",
+  "addIdItem": "Ajouter un ID",
+  "confirmationDialogTitle": "Confirmation",
+  "removeIdConfirmation": "Voulez-vous vraiment supprimer cet ID?",
+  "idRemoved": "ID supprimé"
 }
