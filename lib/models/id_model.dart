@@ -1,14 +1,25 @@
+import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 
 import 'package:my_ids/models/id_item_model.dart';
 
+part 'id_model.g.dart';
+
+@HiveType(typeId: 0)
 class IdModel {
+  @HiveField(0)
   String uid;
+  @HiveField(1)
   String title;
+  @HiveField(2)
   List<IdItemModel> items;
+  @HiveField(3)
   String note;
+  @HiveField(4)
   String hexColor;
+  @HiveField(5)
   DateTime createdAt;
+  @HiveField(6)
   DateTime updatedAt;
 
   IdModel({

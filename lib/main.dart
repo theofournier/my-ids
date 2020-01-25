@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:my_ids/models/id_item_model.dart';
+import 'package:my_ids/models/id_model.dart';
 import 'package:my_ids/providers/bottom_bar_provider.dart';
 import 'package:my_ids/providers/ids_provider.dart';
-import 'package:my_ids/screens/edit_id/edit_id_screen.dart';
 import 'package:my_ids/screens/home/home_screen.dart';
-import 'package:my_ids/screens/id/id_screen.dart';
-import 'package:my_ids/screens/splash/splash_screen.dart';
 import 'package:my_ids/theme.dart' as Theme;
 import 'package:my_ids/routes.dart' as Routes;
+import 'package:my_ids/utils/hive_keys.dart';
 import 'package:provider/provider.dart';
 
 import 'generated/l10n.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter<IdModel>(IdModelAdapter());
+  Hive.registerAdapter<IdItemModel>(IdItemModelAdapter());
+  await Hive.openBox(HiveKeys.idsBoxName);
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override

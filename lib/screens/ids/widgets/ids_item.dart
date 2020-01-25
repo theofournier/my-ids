@@ -43,10 +43,10 @@ class IdsItem extends StatelessWidget {
         ),
       ),
       direction: DismissDirection.endToStart,
-      onDismissed: (_) {
+      onDismissed: (_) async{
         IdModel temp = IdModel.fromJson(data.toJson());
         int index =
-        Provider.of<IdsProvider>(context, listen: false).deleteId(data.uid);
+        await Provider.of<IdsProvider>(context, listen: false).deleteId(data.uid);
         undoFlushbar(index, temp);
       },
       child: GestureDetector(

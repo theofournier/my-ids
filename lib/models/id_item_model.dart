@@ -1,8 +1,18 @@
+import 'package:hive/hive.dart';
+
+part 'id_item_model.g.dart';
+
+@HiveType(typeId: 1)
 class IdItemModel {
+  @HiveField(0)
   final String uid;
+  @HiveField(1)
   String name;
+  @HiveField(2)
   String id;
+  @HiveField(3)
   String password;
+  @HiveField(4)
   String note;
 
   IdItemModel({

@@ -57,7 +57,7 @@ class IdScreen extends StatelessWidget {
                   .showConfirmationDialog();
               if (res) {
                 IdModel temp = IdModel.fromJson(data.toJson());
-                int index = Provider.of<IdsProvider>(context, listen: false)
+                int index = await Provider.of<IdsProvider>(context, listen: false)
                     .deleteId(data.uid);
                 Navigator.of(context).pop({"data": temp, "index": index});
               }
