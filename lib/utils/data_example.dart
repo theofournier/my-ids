@@ -58,7 +58,7 @@ class DataExample {
   static IdModel id3 = IdModel(
     uid: "id3",
     title: "Id3",
-    hexColor: "#6a8caf",
+    hexColor: "6a8caf",
     createdAt: DateTime.parse("2020-01-23T10:30:00+0000"),
     updatedAt: DateTime.parse("2020-01-23T15:40:00+0000"),
     items: [
