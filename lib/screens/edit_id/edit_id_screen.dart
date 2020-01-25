@@ -39,6 +39,17 @@ class _EditIdScreenState extends State<EditIdScreen> {
     super.didChangeDependencies();
   }
 
+  void deleteEmptyIdItem() {
+    if(_data.items != null){
+      for(int i = 0; i < _data.items.length; i++) {
+        IdItemModel temp = _data.items[i];
+        if(temp.name.isEmpty && temp.id.isEmpty && temp.password.isEmpty && temp.note.isEmpty){
+          _data.items.remove(temp);
+        }
+      }
+    }
+  }
+
   Future<void> _submit() async {
     if (!_formKey.currentState.validate()) {
       return;
@@ -47,6 +58,7 @@ class _EditIdScreenState extends State<EditIdScreen> {
     setState(() {
       _isLoading = true;
     });
+    deleteEmptyIdItem();
     String flushbarMessage = "";
     if(_data.uid != null){
       await Provider.of<IdsProvider>(context, listen: false).updateId(_data);
