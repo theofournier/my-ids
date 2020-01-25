@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "color" : MessageLookupByLibrary.simpleMessage("Color"),
     "confirmationDialogTitle" : MessageLookupByLibrary.simpleMessage("Confirmation"),
     "copied" : MessageLookupByLibrary.simpleMessage("Copied!"),
+    "created" : MessageLookupByLibrary.simpleMessage("Created"),
     "delete" : MessageLookupByLibrary.simpleMessage("Delete"),
     "editId" : MessageLookupByLibrary.simpleMessage("Edit ID"),
     "homeText" : MessageLookupByLibrary.simpleMessage("Mes IDs vous permet de sauvegarder en local sur votre portable des identifiants, des mots de passes ainsi que des notes et de leur assigner une couleur"),
@@ -51,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings" : MessageLookupByLibrary.simpleMessage("Settings"),
     "title" : MessageLookupByLibrary.simpleMessage("Title"),
     "undo" : MessageLookupByLibrary.simpleMessage("Undo"),
+    "updated" : MessageLookupByLibrary.simpleMessage("Updated"),
     "yes" : MessageLookupByLibrary.simpleMessage("Yes")
   };
 }

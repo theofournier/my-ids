@@ -29,5 +29,7 @@
   "removeIdConfirmation": "Voulez-vous vraiment supprimer cet ID?",
   "idRemoved": "ID supprimé",
   "noIdFound": "Aucun ID trouvé",
-  "noId": "Aucun ID encore ajouté"
+  "noId": "Aucun ID encore ajouté",
+  "created": "Créé",
+  "updated": "Mise à jour"
 }

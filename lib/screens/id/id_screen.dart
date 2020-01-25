@@ -5,10 +5,10 @@ import 'package:my_ids/generated/l10n.dart';
 import 'package:my_ids/models/id_model.dart';
 import 'package:my_ids/providers/ids_provider.dart';
 import 'package:my_ids/screens/id/widgets/id_item.dart';
-import 'package:my_ids/utils/data_example.dart';
 import 'package:my_ids/utils/hex_color.dart';
 import 'package:my_ids/widgets/confirmation_dialog.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 class IdScreen extends StatelessWidget {
   static const routeName = "/id";
@@ -148,6 +148,50 @@ class IdScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+              SizedBox(
+                height: 16,
+              ),
+              RichText(
+                text: TextSpan(
+                  style: TextStyle(color: Colors.black),
+                  children: [
+                    TextSpan(
+                      text: S.of(context).created,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    TextSpan(
+                      text: "  ",
+                    ),
+                    TextSpan(
+                      text: DateFormat.yMd().add_jm().format(data.createdAt),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              RichText(
+                text: TextSpan(
+                  style: TextStyle(color: Colors.black),
+                  children: [
+                    TextSpan(
+                      text: S.of(context).updated,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    TextSpan(
+                      text: "  ",
+                    ),
+                    TextSpan(
+                      text: DateFormat.yMd().add_jm().format(data.updatedAt),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
