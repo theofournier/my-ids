@@ -31,5 +31,7 @@
   "noIdFound": "No ID founded",
   "noId": "No ID added yet",
   "created": "Created",
-  "updated": "Updated"
+  "updated": "Updated",
+  "isRequired": "is required",
+  "idAdded": "ID added!"
 }

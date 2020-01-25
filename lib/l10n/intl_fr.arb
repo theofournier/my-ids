@@ -31,5 +31,7 @@
   "noIdFound": "Aucun ID trouvé",
   "noId": "Aucun ID encore ajouté",
   "created": "Créé",
-  "updated": "Mise à jour"
+  "updated": "Mise à jour",
+  "isRequired": "est requis",
+  "idAdded": "ID ajouté !"
 }

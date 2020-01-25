@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:my_ids/generated/l10n.dart';
 import 'package:my_ids/models/id_item_model.dart';
 import 'package:my_ids/models/id_model.dart';
+import 'package:my_ids/providers/ids_provider.dart';
 import 'package:my_ids/screens/edit_id/widgets/color_widget.dart';
 import 'package:my_ids/screens/edit_id/widgets/id_item.dart';
 import 'package:my_ids/screens/edit_id/widgets/note_widget.dart';
 import 'package:my_ids/theme.dart';
 import 'package:my_ids/utils/utils.dart';
 import 'package:my_ids/widgets/default_textformfield.dart';
+import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
 class EditIdScreen extends StatefulWidget {
@@ -19,7 +21,8 @@ class EditIdScreen extends StatefulWidget {
 }
 
 class _EditIdScreenState extends State<EditIdScreen> {
-  IdModel _idModel = IdModel(hexColor: Utils.getHexFromColor(AppColors.idColors[0]));
+  IdModel _idModel =
+      IdModel(hexColor: Utils.getHexFromColor(AppColors.idColors[0]));
 
   final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
@@ -32,22 +35,15 @@ class _EditIdScreenState extends State<EditIdScreen> {
     setState(() {
       _isLoading = true;
     });
-    //TODO save id
-    await Utils.sleep(1);
-    print("TITLE ${_idModel.title}");
-    print("NOTE ${_idModel.note}");
-    print("HEXCOLOR ${_idModel.hexColor}");
-    if (_idModel.items != null && _idModel.items.isNotEmpty) {
-      for (int i = 0; i < _idModel.items.length; i++) {
-        print("$i NAME ${_idModel.items[i].name}");
-        print("$i ID ${_idModel.items[i].id}");
-        print("$i PASS ${_idModel.items[i].password}");
-        print("$i NOTE ${_idModel.items[i].note}");
-      }
-    }
+    await Provider.of<IdsProvider>(context, listen: false).addId(_idModel);
     setState(() {
       _isLoading = false;
     });
+    Navigator.of(context).pop();
+    Flushbar(
+      message: S.of(context).idAdded,
+      duration: Duration(seconds: 3),
+    )..show(context);
   }
 
   @override
@@ -95,6 +91,11 @@ class _EditIdScreenState extends State<EditIdScreen> {
                           labelText: S.of(context).title,
                           keyboardType: TextInputType.text,
                           initialValue: _idModel.title,
+                          validator: (value) {
+                            if (value.isEmpty)
+                              return "${S.of(context).title} ${S.of(context).isRequired}";
+                            return null;
+                          },
                           onSaved: (value) => setState(() {
                             _idModel.title = value;
                           }),

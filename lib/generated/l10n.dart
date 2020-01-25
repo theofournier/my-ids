@@ -325,6 +325,24 @@ class S {
       args: [],
     );
   }
+
+  String get isRequired {
+    return Intl.message(
+      'is required',
+      name: 'isRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get idAdded {
+    return Intl.message(
+      'ID added!',
+      name: 'idAdded',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

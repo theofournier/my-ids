@@ -140,7 +140,7 @@ class IdScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 16.0, vertical: 20),
                     child: Text(
-                      data.hexColor.toUpperCase(),
+                      "#${data.hexColor.toUpperCase()}",
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
