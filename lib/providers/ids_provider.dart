@@ -13,7 +13,9 @@ class IdsProvider with ChangeNotifier {
   }
 
   List<IdModel> get filteredIds {
-    return [..._filteredIds];
+    return [..._filteredIds]
+      ..sort((a, b) => b.updatedAt.compareTo(a.updatedAt))
+      ;
   }
 
   Future<void> fetchIds() async {
@@ -38,7 +40,7 @@ class IdsProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> addId(IdModel data) async{
+  Future<void> addId(IdModel data) async {
     await Utils.sleep(1);
     data.uid = Uuid().v4();
     data.createdAt = DateTime.now();
@@ -47,7 +49,7 @@ class IdsProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> updateId(IdModel data) async{
+  Future<void> updateId(IdModel data) async {
     await Utils.sleep(1);
     data.updatedAt = DateTime.now();
     int index = _ids.indexWhere((id) => id.uid == data.uid);

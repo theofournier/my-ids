@@ -34,7 +34,7 @@ class DataExample {
     uid: "id2",
     title: "Id2",
     createdAt: DateTime.parse("2020-01-22T10:30:00+0000"),
-    updatedAt: DateTime.parse("2020-01-22T15:40:00+0000"),
+    updatedAt: DateTime.parse("2020-01-24T15:40:00+0000"),
     items: [
       IdItemModel(
           uid: "idItem1",
@@ -59,8 +59,8 @@ class DataExample {
     uid: "id3",
     title: "Id3",
     hexColor: "#6a8caf",
-    createdAt: DateTime.parse("2020-01-22T10:30:00+0000"),
-    updatedAt: DateTime.parse("2020-01-22T15:40:00+0000"),
+    createdAt: DateTime.parse("2020-01-23T10:30:00+0000"),
+    updatedAt: DateTime.parse("2020-01-23T15:40:00+0000"),
     items: [
       IdItemModel(
           uid: "idItem1",
@@ -85,8 +85,8 @@ class DataExample {
     uid: "id4",
     title: "Id4",
     hexColor: "ee8572",
-    createdAt: DateTime.parse("2020-01-22T10:30:00+0000"),
-    updatedAt: DateTime.parse("2020-01-22T15:40:00+0000"),
+    createdAt: DateTime.parse("2020-01-23T10:30:00+0000"),
+    updatedAt: DateTime.parse("2020-01-23T16:40:00+0000"),
     items: [
       IdItemModel(
           uid: "idItem1",

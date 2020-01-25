@@ -97,8 +97,7 @@ class _IdsScreenState extends State<IdsScreen> {
                         ),
                         itemCount: idsProvider.filteredIds.length,
                         itemBuilder: (ctx, index) {
-                          IdModel item = idsProvider.filteredIds[
-                              idsProvider.filteredIds.length - index - 1];
+                          IdModel item = idsProvider.filteredIds[index];
                           return IdsItem(
                             key: Key(item.uid),
                             data: item,
