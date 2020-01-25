@@ -16,10 +16,10 @@ class IdsProvider with ChangeNotifier {
   }
 
   Future<void> fetchIds() async {
-    /*await Utils.sleep(1);
+    await Utils.sleep(1);
     _ids = DataExample.ids;
     _filteredIds = DataExample.ids;
-    notifyListeners();*/
+    notifyListeners();
   }
 
   void searchIds(String searchText) {

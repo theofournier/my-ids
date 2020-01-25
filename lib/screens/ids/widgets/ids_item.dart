@@ -6,6 +6,7 @@ import 'package:my_ids/providers/ids_provider.dart';
 import 'package:my_ids/screens/id/id_screen.dart';
 import 'package:my_ids/theme.dart';
 import 'package:my_ids/utils/hex_color.dart';
+import 'package:my_ids/utils/utils.dart';
 import 'package:my_ids/widgets/confirmation_dialog.dart';
 import 'package:provider/provider.dart';
 
@@ -81,7 +82,7 @@ class IdsItem extends StatelessWidget {
                         height: 16,
                       ),
                       Text(
-                        DateFormat.yMMMMd().format(data.updatedAt),
+                        getDateFormat(),
                         style: TextStyle(
                           color: textColor,
                         ),
@@ -98,5 +99,12 @@ class IdsItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String getDateFormat(){
+    if(Utils.isToday(data.updatedAt)){
+      return DateFormat.jm().format(data.updatedAt);
+    }
+    return DateFormat.yMMMMd().format(data.updatedAt);
   }
 }
