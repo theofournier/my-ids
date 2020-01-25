@@ -26,7 +26,7 @@ class IdsProvider with ChangeNotifier {
   }
 
   IdModel findByUid(String uid) {
-    return _ids.firstWhere((id) => id.uid == uid);
+    return _ids.firstWhere((id) => id.uid == uid, orElse: () => null);
   }
 
   void searchIds(String searchText) {
@@ -53,6 +53,11 @@ class IdsProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void insertId(int index, IdModel data) {
+    _ids.insert(index, data);
+    notifyListeners();
+  }
+
   Future<void> updateId(IdModel data) async {
     await Utils.sleep(1);
     data.updatedAt = DateTime.now();
@@ -61,8 +66,10 @@ class IdsProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void deleteId(String uid) {
-    _ids.removeWhere((id) => id.uid == uid);
+  int deleteId(String uid) {
+    int index = _ids.indexWhere((id) => id.uid == uid);
+    _ids.removeAt(index);
     notifyListeners();
+    return index;
   }
 }

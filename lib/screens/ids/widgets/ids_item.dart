@@ -1,3 +1,4 @@
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:my_ids/generated/l10n.dart';
@@ -12,8 +13,9 @@ import 'package:provider/provider.dart';
 
 class IdsItem extends StatelessWidget {
   final IdModel data;
+  final Function(int index, IdModel data) undoFlushbar;
 
-  IdsItem({Key key, this.data}) : super(key: key);
+  IdsItem({Key key, this.data, this.undoFlushbar}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,17 +44,17 @@ class IdsItem extends StatelessWidget {
       ),
       direction: DismissDirection.endToStart,
       onDismissed: (_) {
+        IdModel temp = IdModel.fromJson(data.toJson());
+        int index =
         Provider.of<IdsProvider>(context, listen: false).deleteId(data.uid);
-      },
-      confirmDismiss: (direction) {
-        return ConfirmationDialog(
-            context: context,
-            title: S.of(context).confirmationDialogTitle,
-            message: S.of(context).removeIdConfirmation)
-            .showConfirmationDialog();
+        undoFlushbar(index, temp);
       },
       child: GestureDetector(
-        onTap: () => Navigator.of(context).pushNamed(IdScreen.routeName, arguments: data.uid),
+        onTap: () async{
+          dynamic res = await Navigator.of(context).pushNamed(IdScreen.routeName, arguments: data.uid);
+          if(res != null)
+            undoFlushbar(res["index"], res["data"]);
+        } ,
         child: Card(
           elevation: 2,
           margin: const EdgeInsets.all(0),

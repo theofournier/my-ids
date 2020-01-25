@@ -1,3 +1,4 @@
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:my_ids/generated/l10n.dart';
 import 'package:my_ids/models/id_model.dart';
@@ -33,6 +34,27 @@ class _IdsScreenState extends State<IdsScreen> {
 
   Future<void> _refreshIds(BuildContext context) async {
     await Provider.of<IdsProvider>(context, listen: false).fetchIds();
+  }
+
+  void undoFlushbar(int index, IdModel data) {
+    Flushbar flushbar;
+    flushbar = Flushbar(
+      message: S.of(context).idDeleted,
+      duration: Duration(seconds: 3),
+      mainButton: FlatButton(
+        onPressed: () {
+          flushbar.dismiss(true);
+        },
+        child: Text(
+          S.of(context).undo.toUpperCase(),
+          style: TextStyle(color: Theme.of(context).accentColor),
+        ),
+      ),
+    )..show(context).then((result) {
+        if (result ?? false)
+          Provider.of<IdsProvider>(context, listen: false)
+              .insertId(index, data);
+      });
   }
 
   @override
@@ -101,6 +123,7 @@ class _IdsScreenState extends State<IdsScreen> {
                           return IdsItem(
                             key: Key(item.uid),
                             data: item,
+                            undoFlushbar: undoFlushbar,
                           );
                         },
                       );

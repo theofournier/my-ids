@@ -34,5 +34,6 @@
   "updated": "Updated",
   "isRequired": "is required",
   "idAdded": "ID added!",
-  "idUpdated": "ID updated!"
+  "idUpdated": "ID updated!",
+  "idDeleted": "ID deleted!"
 }

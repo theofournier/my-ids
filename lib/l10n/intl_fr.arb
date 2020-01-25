@@ -34,5 +34,6 @@
   "updated": "Mise à jour",
   "isRequired": "est requis",
   "idAdded": "ID ajouté !",
-  "idUpdated": "ID mise à jour !"
+  "idUpdated": "ID mise à jour !",
+  "idDeleted": "ID supprimé !"
 }

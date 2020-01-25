@@ -29,7 +29,7 @@ class IdScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String uid = ModalRoute.of(context).settings.arguments;
-    data = Provider.of<IdsProvider>(context, listen: false).findByUid(uid);
+    data = Provider.of<IdsProvider>(context, listen: false).findByUid(uid) ?? data;
 
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
@@ -56,9 +56,10 @@ class IdScreen extends StatelessWidget {
                       message: S.of(context).removeIdConfirmation)
                   .showConfirmationDialog();
               if (res) {
-                Navigator.of(context).pop();
-                Provider.of<IdsProvider>(context, listen: false)
+                IdModel temp = IdModel.fromJson(data.toJson());
+                int index = Provider.of<IdsProvider>(context, listen: false)
                     .deleteId(data.uid);
+                Navigator.of(context).pop({"data": temp, "index": index});
               }
             },
           ),

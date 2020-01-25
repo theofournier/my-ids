@@ -352,6 +352,15 @@ class S {
       args: [],
     );
   }
+
+  String get idDeleted {
+    return Intl.message(
+      'ID deleted!',
+      name: 'idDeleted',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
