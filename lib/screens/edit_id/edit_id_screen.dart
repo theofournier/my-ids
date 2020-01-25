@@ -21,11 +21,23 @@ class EditIdScreen extends StatefulWidget {
 }
 
 class _EditIdScreenState extends State<EditIdScreen> {
-  IdModel _idModel =
+  IdModel _data =
       IdModel(hexColor: Utils.getHexFromColor(AppColors.idColors[0]));
 
   final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
+
+  bool _isInit = false;
+  @override
+  void didChangeDependencies() {
+    if(!_isInit){
+      IdModel idInit = ModalRoute.of(context).settings.arguments;
+      if(idInit != null){
+        _data = IdModel.fromJson(idInit.toJson());
+      }
+    }
+    super.didChangeDependencies();
+  }
 
   Future<void> _submit() async {
     if (!_formKey.currentState.validate()) {
@@ -35,13 +47,20 @@ class _EditIdScreenState extends State<EditIdScreen> {
     setState(() {
       _isLoading = true;
     });
-    await Provider.of<IdsProvider>(context, listen: false).addId(_idModel);
+    String flushbarMessage = "";
+    if(_data.uid != null){
+      await Provider.of<IdsProvider>(context, listen: false).updateId(_data);
+      flushbarMessage = S.of(context).idUpdated;
+    } else {
+      await Provider.of<IdsProvider>(context, listen: false).addId(_data);
+      flushbarMessage = S.of(context).idAdded;
+    }
     setState(() {
       _isLoading = false;
     });
     Navigator.of(context).pop();
     Flushbar(
-      message: S.of(context).idAdded,
+      message: flushbarMessage,
       duration: Duration(seconds: 3),
     )..show(context);
   }
@@ -55,7 +74,7 @@ class _EditIdScreenState extends State<EditIdScreen> {
         backgroundColor: Theme.of(context).backgroundColor,
         iconTheme: IconThemeData(color: Colors.black),
         title: Text(
-          _idModel.uid != null ? S.of(context).editId : S.of(context).newId,
+          _data.uid != null ? S.of(context).editId : S.of(context).newId,
           style: TextStyle(color: Colors.black, fontFamily: "Nunito"),
         ),
         actions: <Widget>[
@@ -90,14 +109,14 @@ class _EditIdScreenState extends State<EditIdScreen> {
                         DefaultTextFormField(
                           labelText: S.of(context).title,
                           keyboardType: TextInputType.text,
-                          initialValue: _idModel.title,
+                          initialValue: _data.title,
                           validator: (value) {
                             if (value.isEmpty)
                               return "${S.of(context).title} ${S.of(context).isRequired}";
                             return null;
                           },
                           onSaved: (value) => setState(() {
-                            _idModel.title = value;
+                            _data.title = value;
                           }),
                         ),
                         SizedBox(
@@ -110,11 +129,11 @@ class _EditIdScreenState extends State<EditIdScreen> {
                             color: Theme.of(context).accentColor,
                           ),
                           onPressed: () {
-                            if (_idModel.items == null) {
-                              _idModel.items = [];
+                            if (_data.items == null) {
+                              _data.items = [];
                             }
                             setState(() {
-                              _idModel.items.add(IdItemModel(uid: Uuid().v4()));
+                              _data.items.add(IdItemModel(uid: Uuid().v4()));
                             });
                           },
                         ),
@@ -122,16 +141,16 @@ class _EditIdScreenState extends State<EditIdScreen> {
                           height: 10,
                         ),
                         NoteWidget(
-                          value: _idModel.note,
-                          onSaved: (value) => _idModel.note = value,
+                          value: _data.note,
+                          onSaved: (value) => _data.note = value,
                         ),
                         SizedBox(
                           height: 10,
                         ),
                         ColorWidget(
-                          hexColor: _idModel.hexColor,
+                          hexColor: _data.hexColor,
                           callback: (String hexColor) => setState(() {
-                            _idModel.hexColor = hexColor;
+                            _data.hexColor = hexColor;
                           }),
                         ),
                       ],
@@ -144,18 +163,18 @@ class _EditIdScreenState extends State<EditIdScreen> {
   }
 
   Widget _buildIdItemList() {
-    return _idModel.items != null && _idModel.items.isNotEmpty
+    return _data.items != null && _data.items.isNotEmpty
         ? Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: _idModel.items
+            children: _data.items
                 .map(
                   (item) => IdItem(
                     key: Key(item.uid ?? Uuid().v4()),
                     idItemModel: item,
                     onDelete: () {
                       setState(() {
-                        _idModel.items.remove(item);
+                        _data.items.remove(item);
                       });
                     },
                   ),

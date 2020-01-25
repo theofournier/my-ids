@@ -12,4 +12,19 @@ class IdItemModel {
     this.password,
     this.note,
   });
+
+  IdItemModel.fromJson(Map<String, dynamic> json)
+      : uid = json['uid'],
+        name = json['name'],
+        id = json['id'],
+        password = json['password'],
+        note = json["note"];
+
+  Map<String, dynamic> toJson() => {
+    'uid': uid,
+    'name': name,
+    'id': id,
+    'password': password,
+    'note': note,
+  };
 }

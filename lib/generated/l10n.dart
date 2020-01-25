@@ -343,6 +343,15 @@ class S {
       args: [],
     );
   }
+
+  String get idUpdated {
+    return Intl.message(
+      'ID updated!',
+      name: 'idUpdated',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

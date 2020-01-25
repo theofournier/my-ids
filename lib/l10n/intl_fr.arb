@@ -33,5 +33,6 @@
   "created": "Créé",
   "updated": "Mise à jour",
   "isRequired": "est requis",
-  "idAdded": "ID ajouté !"
+  "idAdded": "ID ajouté !",
+  "idUpdated": "ID mise à jour !"
 }

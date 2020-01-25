@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:my_ids/generated/l10n.dart';
 import 'package:my_ids/models/id_model.dart';
 import 'package:my_ids/providers/ids_provider.dart';
+import 'package:my_ids/screens/edit_id/edit_id_screen.dart';
 import 'package:my_ids/screens/id/widgets/id_item.dart';
 import 'package:my_ids/utils/hex_color.dart';
 import 'package:my_ids/widgets/confirmation_dialog.dart';
@@ -39,7 +40,10 @@ class IdScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.edit),
             tooltip: S.of(context).editId,
-            onPressed: () => print("EDIT"),
+            onPressed: () => Navigator.of(context).pushNamed(
+              EditIdScreen.routeName,
+              arguments: data,
+            ),
           ),
           IconButton(
             icon: Icon(Icons.delete),
