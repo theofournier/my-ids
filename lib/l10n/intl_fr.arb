@@ -20,11 +20,14 @@
   "ok": "Okay",
   "cancel": "Annuler",
   "save": "Sauvegarder",
+  "delete": "Supprimer",
   "yes": "Oui",
   "no": "Non",
   "undo": "Annuler",
   "addIdItem": "Ajouter un ID",
   "confirmationDialogTitle": "Confirmation",
   "removeIdConfirmation": "Voulez-vous vraiment supprimer cet ID?",
-  "idRemoved": "ID supprimé"
+  "idRemoved": "ID supprimé",
+  "noIdFound": "Aucun ID trouvé",
+  "noId": "Aucun ID encore ajouté"
 }

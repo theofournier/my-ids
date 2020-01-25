@@ -67,6 +67,28 @@ class _IdsScreenState extends State<IdsScreen> {
                   onRefresh: () => _refreshIds(context),
                   child: Consumer<IdsProvider>(
                     builder: (ctx, idsProvider, _) {
+                      if (idsProvider.ids.isEmpty) {
+                        return Text(
+                          S.of(context).noId,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 20,
+                          ),
+                        );
+                      }
+                      if (idsProvider.filteredIds.isEmpty) {
+                        return Text(
+                          S.of(context).noIdFound,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 20,
+                          ),
+                        );
+                      }
                       return ListView.separated(
                         padding: const EdgeInsets.only(
                             right: 30, left: 30, bottom: 20),

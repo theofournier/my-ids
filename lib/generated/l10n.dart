@@ -218,6 +218,15 @@ class S {
     );
   }
 
+  String get delete {
+    return Intl.message(
+      'Delete',
+      name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get yes {
     return Intl.message(
       'Yes',
@@ -276,6 +285,24 @@ class S {
     return Intl.message(
       'ID removed',
       name: 'idRemoved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get noIdFound {
+    return Intl.message(
+      'No ID founded',
+      name: 'noIdFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get noId {
+    return Intl.message(
+      'No ID added yet',
+      name: 'noId',
       desc: '',
       args: [],
     );

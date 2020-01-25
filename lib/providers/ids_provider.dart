@@ -36,4 +36,10 @@ class IdsProvider with ChangeNotifier {
     }
     notifyListeners();
   }
+
+  void deleteId(String uid) {
+    _ids.removeWhere((id) => id.uid == uid);
+    _filteredIds.removeWhere((id) => id.uid == uid);
+    notifyListeners();
+  }
 }

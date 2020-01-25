@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:my_ids/generated/l10n.dart';
 import 'package:my_ids/models/id_model.dart';
+import 'package:my_ids/providers/ids_provider.dart';
 import 'package:my_ids/screens/id/widgets/id_item.dart';
 import 'package:my_ids/utils/data_example.dart';
 import 'package:my_ids/utils/hex_color.dart';
+import 'package:my_ids/widgets/confirmation_dialog.dart';
+import 'package:provider/provider.dart';
 
 class IdScreen extends StatelessWidget {
   static const routeName = "/id";
@@ -16,8 +19,8 @@ class IdScreen extends StatelessWidget {
     Clipboard.setData(ClipboardData(text: text));
     Clipboard.getData("text/plain").then((value) {
       Flushbar(
-        message:  "${S.of(context).copied} ${value.text}",
-        duration:  Duration(seconds: 3),
+        message: "${S.of(context).copied} ${value.text}",
+        duration: Duration(seconds: 3),
       )..show(context);
     });
   }
@@ -37,6 +40,22 @@ class IdScreen extends StatelessWidget {
             icon: Icon(Icons.edit),
             tooltip: S.of(context).editId,
             onPressed: () => print("EDIT"),
+          ),
+          IconButton(
+            icon: Icon(Icons.delete),
+            tooltip: S.of(context).delete,
+            onPressed: () async {
+              bool res = await ConfirmationDialog(
+                      context: context,
+                      title: S.of(context).confirmationDialogTitle,
+                      message: S.of(context).removeIdConfirmation)
+                  .showConfirmationDialog();
+              if (res) {
+                Navigator.of(context).pop();
+                Provider.of<IdsProvider>(context, listen: false)
+                    .deleteId(data.uid);
+              }
+            },
           ),
         ],
       ),
@@ -69,11 +88,11 @@ class IdScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: data.items
                       .map((item) => IdItem(
-                    key: Key(item.uid),
-                    data: item,
-                    hexColor: data.hexColor,
-                    onTapCopied: onTapCopied,
-                  ))
+                            key: Key(item.uid),
+                            data: item,
+                            hexColor: data.hexColor,
+                            onTapCopied: onTapCopied,
+                          ))
                       .toList(),
                 ),
               if (data.note != null && data.note.isNotEmpty)
@@ -89,7 +108,8 @@ class IdScreen extends StatelessWidget {
                   ),
                   color: Colors.white,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     child: ConstrainedBox(
                       constraints: BoxConstraints(
                         minHeight: 80,
@@ -117,7 +137,8 @@ class IdScreen extends StatelessWidget {
                   ),
                   color: HexColor(data.hexColor),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 20),
                     child: Text(
                       data.hexColor.toUpperCase(),
                       style: TextStyle(
