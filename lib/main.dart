@@ -1,5 +1,8 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:my_ids/models/id_item_model.dart';
@@ -18,7 +21,13 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter<IdModel>(IdModelAdapter());
   Hive.registerAdapter<IdItemModel>(IdItemModelAdapter());
-  await Hive.openBox(HiveKeys.idsBoxName);
+  final storage = FlutterSecureStorage();
+  String encryptionKey = await storage.read(key: HiveKeys.encryptionKey);
+  if(encryptionKey == null || encryptionKey.isEmpty){
+    encryptionKey = String.fromCharCodes(Hive.generateSecureKey());
+    await storage.write(key: HiveKeys.encryptionKey, value: encryptionKey);
+  }
+  await Hive.openBox(HiveKeys.idsBoxName, encryptionKey: Uint8List.fromList(encryptionKey.codeUnits));
   runApp(MyApp());
 }
 
