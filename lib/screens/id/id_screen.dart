@@ -28,7 +28,8 @@ class IdScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    data = ModalRoute.of(context).settings.arguments;
+    String uid = ModalRoute.of(context).settings.arguments;
+    data = Provider.of<IdsProvider>(context, listen: false).findByUid(uid);
 
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
@@ -42,7 +43,7 @@ class IdScreen extends StatelessWidget {
             tooltip: S.of(context).editId,
             onPressed: () => Navigator.of(context).pushNamed(
               EditIdScreen.routeName,
-              arguments: data,
+              arguments: data.uid,
             ),
           ),
           IconButton(

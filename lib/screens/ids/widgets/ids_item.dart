@@ -52,7 +52,7 @@ class IdsItem extends StatelessWidget {
             .showConfirmationDialog();
       },
       child: GestureDetector(
-        onTap: () => Navigator.of(context).pushNamed(IdScreen.routeName, arguments: data),
+        onTap: () => Navigator.of(context).pushNamed(IdScreen.routeName, arguments: data.uid),
         child: Card(
           elevation: 2,
           margin: const EdgeInsets.all(0),

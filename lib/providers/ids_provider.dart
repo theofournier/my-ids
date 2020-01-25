@@ -25,6 +25,10 @@ class IdsProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  IdModel findByUid(String uid) {
+    return _ids.firstWhere((id) => id.uid == uid);
+  }
+
   void searchIds(String searchText) {
     if (searchText.isNotEmpty) {
       List<IdModel> tempList = [];

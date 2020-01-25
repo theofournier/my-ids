@@ -31,9 +31,10 @@ class _EditIdScreenState extends State<EditIdScreen> {
   @override
   void didChangeDependencies() {
     if(!_isInit){
-      IdModel idInit = ModalRoute.of(context).settings.arguments;
-      if(idInit != null){
-        _data = IdModel.fromJson(idInit.toJson());
+      String uid = ModalRoute.of(context).settings.arguments;
+      if(uid != null){
+        IdModel temp = Provider.of<IdsProvider>(context, listen: false).findByUid(uid);
+        _data = IdModel.fromJson(temp.toJson());
       }
     }
     super.didChangeDependencies();
