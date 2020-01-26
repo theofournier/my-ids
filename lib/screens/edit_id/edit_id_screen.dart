@@ -21,19 +21,20 @@ class EditIdScreen extends StatefulWidget {
 }
 
 class _EditIdScreenState extends State<EditIdScreen> {
-  IdModel _data =
-      IdModel(hexColor: Utils.getHexFromColor(AppColors.idColors[0]));
+  IdModel _data = IdModel();
 
   final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
 
   bool _isInit = false;
+
   @override
   void didChangeDependencies() {
-    if(!_isInit){
+    if (!_isInit) {
       String uid = ModalRoute.of(context).settings.arguments;
-      if(uid != null){
-        IdModel temp = Provider.of<IdsProvider>(context, listen: false).findByUid(uid);
+      if (uid != null) {
+        IdModel temp =
+            Provider.of<IdsProvider>(context, listen: false).findByUid(uid);
         _data = IdModel.fromJson(temp.toJson());
       }
     }
@@ -41,10 +42,13 @@ class _EditIdScreenState extends State<EditIdScreen> {
   }
 
   void deleteEmptyIdItem() {
-    if(_data.items != null){
-      for(int i = 0; i < _data.items.length; i++) {
+    if (_data.items != null) {
+      for (int i = 0; i < _data.items.length; i++) {
         IdItemModel temp = _data.items[i];
-        if(temp.name.isEmpty && temp.id.isEmpty && temp.password.isEmpty && temp.note.isEmpty){
+        if (temp.name.isEmpty &&
+            temp.id.isEmpty &&
+            temp.password.isEmpty &&
+            temp.note.isEmpty) {
           _data.items.remove(temp);
         }
       }
@@ -61,7 +65,7 @@ class _EditIdScreenState extends State<EditIdScreen> {
     });
     deleteEmptyIdItem();
     String flushbarMessage = "";
-    if(_data.uid != null){
+    if (_data.uid != null) {
       await Provider.of<IdsProvider>(context, listen: false).updateId(_data);
       flushbarMessage = S.of(context).idUpdated;
     } else {
