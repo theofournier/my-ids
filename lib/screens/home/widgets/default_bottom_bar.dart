@@ -1,9 +1,14 @@
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:my_ids/generated/l10n.dart';
+import 'package:my_ids/models/id_model.dart';
 import 'package:my_ids/providers/bottom_bar_provider.dart';
+import 'package:my_ids/providers/ids_provider.dart';
 import 'package:my_ids/screens/edit_id/edit_id_screen.dart';
+import 'package:my_ids/screens/id/id_screen.dart';
 import 'package:my_ids/screens/ids/ids_screen.dart';
 import 'package:my_ids/screens/profile/profile_screen.dart';
+import 'package:my_ids/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 class DefaultBottomBarItem {
@@ -37,8 +42,9 @@ class DefaultBottomBar extends StatelessWidget {
       return _buildTabItem(
         context: context,
         item: items[index],
-        onPressed: (routeName) => Provider.of<BottomBarProvider>(context, listen: false)
-            .currentRouteName = routeName,
+        onPressed: (routeName) =>
+            Provider.of<BottomBarProvider>(context, listen: false)
+                .currentRouteName = routeName,
       );
     });
     widgetItems.insert(widgetItems.length >> 1, _buildMiddleTabItem(context));
@@ -57,7 +63,21 @@ class DefaultBottomBar extends StatelessWidget {
   Widget _buildMiddleTabItem(BuildContext context) {
     return Flexible(
       child: InkWell(
-        onTap: () => Navigator.of(context).pushNamed(EditIdScreen.routeName),
+        onTap: () async {
+          dynamic resUid =
+              await Navigator.of(context).pushNamed(EditIdScreen.routeName);
+          if (resUid != null) {
+            dynamic res = await Navigator.of(context)
+                .pushNamed(IdScreen.routeName, arguments: resUid);
+            if (res != null)
+              Utils.undoFlushbar(
+                context,
+                S.of(context).idDeleted,
+                () => Provider.of<IdsProvider>(context, listen: false)
+                    .insertId(res["index"], res["data"]),
+              );
+          }
+        },
         child: Container(
           width: 40,
           height: 40,
@@ -83,8 +103,8 @@ class DefaultBottomBar extends StatelessWidget {
     DefaultBottomBarItem item,
     ValueChanged<String> onPressed,
   }) {
-    Color color =
-    Provider.of<BottomBarProvider>(context).currentRouteName == item.routeName
+    Color color = Provider.of<BottomBarProvider>(context).currentRouteName ==
+            item.routeName
         ? Theme.of(context).primaryColor
         : Colors.black;
     return Expanded(
@@ -104,9 +124,9 @@ class DefaultBottomBar extends StatelessWidget {
                   style: TextStyle(
                     color: color,
                     fontFamily: "Nunito",
-                    fontWeight:
-                    Provider.of<BottomBarProvider>(context).currentRouteName ==
-                        item.routeName
+                    fontWeight: Provider.of<BottomBarProvider>(context)
+                                .currentRouteName ==
+                            item.routeName
                         ? FontWeight.bold
                         : FontWeight.normal,
                   ),

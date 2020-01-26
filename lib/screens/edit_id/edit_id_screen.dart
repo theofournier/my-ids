@@ -65,17 +65,18 @@ class _EditIdScreenState extends State<EditIdScreen> {
     });
     deleteEmptyIdItem();
     String flushbarMessage = "";
+    String uid;
     if (_data.uid != null) {
       await Provider.of<IdsProvider>(context, listen: false).updateId(_data);
       flushbarMessage = S.of(context).idUpdated;
     } else {
-      await Provider.of<IdsProvider>(context, listen: false).addId(_data);
+      uid = await Provider.of<IdsProvider>(context, listen: false).addId(_data);
       flushbarMessage = S.of(context).idAdded;
     }
     setState(() {
       _isLoading = false;
     });
-    Navigator.of(context).pop();
+    Navigator.of(context).pop(uid);
     Flushbar(
       message: flushbarMessage,
       duration: Duration(seconds: 3),

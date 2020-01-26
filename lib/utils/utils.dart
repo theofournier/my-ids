@@ -1,4 +1,6 @@
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
+import 'package:my_ids/generated/l10n.dart';
 
 class Utils {
   static Future<void> sleep(int seconds) {
@@ -21,5 +23,25 @@ class Utils {
       return true;
     }
     return false;
+  }
+
+  static void undoFlushbar(BuildContext context, String message, Function onUndo){
+    Flushbar flushbar;
+    flushbar = Flushbar(
+      message: message,
+      duration: Duration(seconds: 3),
+      mainButton: FlatButton(
+        onPressed: () {
+          flushbar.dismiss(true);
+        },
+        child: Text(
+          S.of(context).undo.toUpperCase(),
+          style: TextStyle(color: Theme.of(context).accentColor),
+        ),
+      ),
+    )..show(context).then((result) {
+      if (result ?? false)
+        onUndo();
+    });
   }
 }

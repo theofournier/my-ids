@@ -49,13 +49,14 @@ class IdsProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> addId(IdModel data) async {
+  Future<String> addId(IdModel data) async {
     data.uid = Uuid().v4();
     data.createdAt = DateTime.now();
     data.updatedAt = DateTime.now();
     _ids.add(data);
     await Hive.box(HiveKeys.idsBoxName).put(HiveKeys.idsKey, _ids);
     notifyListeners();
+    return data.uid;
   }
 
   Future<void> insertId(int index, IdModel data) async {
