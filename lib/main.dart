@@ -7,8 +7,10 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:my_ids/models/id_item_model.dart';
 import 'package:my_ids/models/id_model.dart';
+import 'package:my_ids/providers/auth_provider.dart';
 import 'package:my_ids/providers/bottom_bar_provider.dart';
 import 'package:my_ids/providers/ids_provider.dart';
+import 'package:my_ids/screens/auth/auth_screen.dart';
 import 'package:my_ids/screens/home/home_screen.dart';
 import 'package:my_ids/theme.dart' as Theme;
 import 'package:my_ids/routes.dart' as Routes;
@@ -38,6 +40,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider.value(value: BottomBarProvider()),
         ChangeNotifierProvider.value(value: IdsProvider()),
+        ChangeNotifierProvider.value(value: AuthProvider()),
       ],
       child: GestureDetector(
         onTap: () {
@@ -57,7 +60,7 @@ class MyApp extends StatelessWidget {
           theme: Theme.themeData,
           onGenerateTitle: (ctx) => S.of(ctx).appTitle,
           routes: Routes.routes,
-          initialRoute: HomeScreen.routeName,
+          initialRoute: AuthScreen.routeName,
         ),
       ),
     );

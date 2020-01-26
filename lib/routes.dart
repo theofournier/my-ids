@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_ids/screens/auth/auth_screen.dart';
 import 'package:my_ids/screens/edit_id/edit_id_screen.dart';
 import 'package:my_ids/screens/home/home_screen.dart';
 import 'package:my_ids/screens/id/id_screen.dart';
@@ -15,4 +16,5 @@ final routes = <String, WidgetBuilder> {
   ProfileScreen.routeName: (ctx) => ProfileScreen(),
   SettingsScreen.routeName: (ctx) => SettingsScreen(),
   EditIdScreen.routeName: (ctx) => EditIdScreen(),
+  AuthScreen.routeName: (ctx) => AuthScreen(),
 };

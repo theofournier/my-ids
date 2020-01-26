@@ -361,6 +361,69 @@ class S {
       args: [],
     );
   }
+
+  String get welcomeOn {
+    return Intl.message(
+      'Welcome on',
+      name: 'welcomeOn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get firstEnterMasterCode {
+    return Intl.message(
+      'First, enter your master code',
+      name: 'firstEnterMasterCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get warningMasterCode {
+    return Intl.message(
+      'You can\'t retrieve it, so don\'t forget it',
+      name: 'warningMasterCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get setMasterCode {
+    return Intl.message(
+      'Set a master code of 4 to 8 digits',
+      name: 'setMasterCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get confirmMasterCode {
+    return Intl.message(
+      'Confirm master code',
+      name: 'confirmMasterCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get next {
+    return Intl.message(
+      'Next',
+      name: 'next',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get previous {
+    return Intl.message(
+      'Previous',
+      name: 'previous',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

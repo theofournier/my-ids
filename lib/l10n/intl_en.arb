@@ -35,5 +35,12 @@
   "isRequired": "is required",
   "idAdded": "ID added!",
   "idUpdated": "ID updated!",
-  "idDeleted": "ID deleted!"
+  "idDeleted": "ID deleted!",
+  "welcomeOn": "Welcome on",
+  "firstEnterMasterCode": "First, enter your master code",
+  "warningMasterCode": "You can't retrieve it, so don't forget it",
+  "setMasterCode": "Set a master code of 4 to 8 digits",
+  "confirmMasterCode": "Confirm master code",
+  "next": "Next",
+  "previous": "Previous"
 }
