@@ -123,6 +123,7 @@ class _EditIdScreenState extends State<EditIdScreen> {
                           labelText: S.of(context).title,
                           keyboardType: TextInputType.text,
                           initialValue: _data.title,
+                          textCapitalization: TextCapitalization.sentences,
                           validator: (value) {
                             if (value.isEmpty)
                               return "${S.of(context).title} ${S.of(context).isRequired}";
