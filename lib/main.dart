@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
           theme: Theme.themeData,
           onGenerateTitle: (ctx) => S.of(ctx).appTitle,
           routes: Routes.routes,
-          initialRoute: AuthScreen.routeName,
+          initialRoute: HomeScreen.routeName,
         ),
       ),
     );
