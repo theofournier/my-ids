@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:hive/hive.dart';
+import 'package:my_ids/utils/hive_keys.dart';
 
 class AuthProvider with ChangeNotifier {
-  final _passwordKey = "my_ids_passwordKey";
-
   String _password;
+  bool _isAuth = false;
+
+  String get password {
+    return _password;
+  }
+
+  bool get isAuth {
+    return _isAuth;
+  }
 
   Future<void> retrievePassword() async {
-    final storage = FlutterSecureStorage();
-    String temp = await storage.read(key: _passwordKey);
+    String temp = await Hive.box(HiveKeys.authBoxName)
+        .get(HiveKeys.passwordKey);
     if (temp != null && temp.isNotEmpty) {
       _password = temp;
       notifyListeners();
@@ -19,9 +27,13 @@ class AuthProvider with ChangeNotifier {
     return _password == password;
   }
 
-  void savePassword(String password) async {
-    final storage = FlutterSecureStorage();
-    await storage.write(key: _passwordKey, value: password);
+  void login() {
+    _isAuth = true;
+    notifyListeners();
+  }
+
+  void savePassword(String password) {
+    Hive.box(HiveKeys.authBoxName).put(HiveKeys.passwordKey, password);
     _password = password;
     notifyListeners();
   }

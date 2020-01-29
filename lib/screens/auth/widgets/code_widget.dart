@@ -20,6 +20,7 @@ class CodeWidget extends StatefulWidget {
 class _CodeWidgetState extends State<CodeWidget> {
   String _password = "";
   String _errorMessage = "";
+  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -55,10 +56,12 @@ class _CodeWidgetState extends State<CodeWidget> {
               color: Theme.of(context).errorColor,
             ),
           ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: _buildCodeButtons(),
-        ),
+        if (_isLoading) CircularProgressIndicator(),
+        if (!_isLoading)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: _buildCodeButtons(),
+          ),
         SizedBox(
           height: 50,
         ),
@@ -98,17 +101,22 @@ class _CodeWidgetState extends State<CodeWidget> {
   void _onPressedDelete() {
     if (_password.length > 0) {
       setState(() {
+        _errorMessage = "";
         _password = _password.substring(0, _password.length - 1);
       });
     }
   }
 
   void _onPressedDone() {
+    setState(() {
+      _isLoading = true;
+    });
     if (widget.validator != null) {
       String temp = widget.validator(_password);
       if (temp != null) {
         setState(() {
           _errorMessage = temp;
+          _isLoading = false;
         });
         return;
       }
@@ -117,6 +125,7 @@ class _CodeWidgetState extends State<CodeWidget> {
     setState(() {
       _errorMessage = "";
       _password = "";
+      _isLoading = false;
     });
   }
 

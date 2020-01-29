@@ -13,6 +13,7 @@ import 'package:my_ids/providers/ids_provider.dart';
 import 'package:my_ids/screens/auth/login_screen.dart';
 import 'package:my_ids/screens/auth/register_screen.dart';
 import 'package:my_ids/screens/home/home_screen.dart';
+import 'package:my_ids/screens/splash/splash_screen.dart';
 import 'package:my_ids/theme.dart' as Theme;
 import 'package:my_ids/routes.dart' as Routes;
 import 'package:my_ids/utils/hive_keys.dart';
@@ -26,11 +27,14 @@ void main() async {
   Hive.registerAdapter<IdItemModel>(IdItemModelAdapter());
   final storage = FlutterSecureStorage();
   String encryptionKey = await storage.read(key: HiveKeys.encryptionKey);
-  if(encryptionKey == null || encryptionKey.isEmpty){
+  if (encryptionKey == null || encryptionKey.isEmpty) {
     encryptionKey = String.fromCharCodes(Hive.generateSecureKey());
     await storage.write(key: HiveKeys.encryptionKey, value: encryptionKey);
   }
-  await Hive.openBox(HiveKeys.idsBoxName, encryptionKey: Uint8List.fromList(encryptionKey.codeUnits));
+  await Hive.openBox(HiveKeys.idsBoxName,
+      encryptionKey: Uint8List.fromList(encryptionKey.codeUnits));
+  await Hive.openBox(HiveKeys.authBoxName,
+      encryptionKey: Uint8List.fromList(encryptionKey.codeUnits));
   runApp(MyApp());
 }
 
@@ -61,7 +65,25 @@ class MyApp extends StatelessWidget {
           theme: Theme.themeData,
           onGenerateTitle: (ctx) => S.of(ctx).appTitle,
           routes: Routes.routes,
-          initialRoute: LoginScreen.routeName,
+          home: Consumer<AuthProvider>(
+            builder: (ctx, authProvider, _) {
+              if (authProvider.isAuth) {
+                return HomeScreen();
+              }
+              if (authProvider.password != null) {
+                return LoginScreen();
+              }
+              return FutureBuilder(
+                future: authProvider.retrievePassword(),
+                builder: (ctx, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return SplashScreen();
+                  }
+                  return RegisterScreen();
+                },
+              );
+            },
+          ),
         ),
       ),
     );

@@ -46,18 +46,18 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Expanded(
               child: CodeWidget(
-                key: Key("2"),
+                key: Key("LOGIN"),
                 validator: (value) {
                   if (!Utils.isMasterCodeValid(value))
                     return S.of(context).errorMasterCodeInvalid;
-                  if (Provider.of<AuthProvider>(context, listen: false)
+                  if (!Provider.of<AuthProvider>(context, listen: false)
                       .checkPassword(value))
-                    return S.of(context).errorMasterCodeConfirmation;
+                    return S.of(context).errorMasterCodeWrong;
                   return null;
                 },
                 onDone: (password) {
-                  Navigator.of(context)
-                      .pushReplacementNamed(HomeScreen.routeName);
+                  Provider.of<AuthProvider>(context, listen: false)
+                      .login();
                 },
               ),
             ),

@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:my_ids/generated/l10n.dart';
 
@@ -39,6 +40,7 @@ class SplashScreen extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
+              CircularProgressIndicator(),
             ],
           ),
         ),

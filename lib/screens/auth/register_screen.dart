@@ -88,7 +88,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
           onDone: (password) {
             Provider.of<AuthProvider>(context, listen: false)
                 .savePassword(password);
-            Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+            Provider.of<AuthProvider>(context, listen: false)
+                .login();
           },
         );
     }
