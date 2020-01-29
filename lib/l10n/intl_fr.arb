@@ -42,5 +42,8 @@
   "setMasterCode": "Entrez un mot de passe maître de 4 à 8 chiffres",
   "confirmMasterCode": "Confirmez mot de passe maître",
   "next": "Suivant",
-  "previous": "Précédent"
+  "previous": "Précédent",
+  "errorMasterCodeWrong": "Mauvais mot de passe maître",
+  "errorMasterCodeInvalid": "Mot de passe maître doit être de 4 à 8 chiffres",
+  "errorMasterCodeConfirmation": "Mot de passes maître non identique"
 }

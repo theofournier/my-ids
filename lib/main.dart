@@ -10,7 +10,8 @@ import 'package:my_ids/models/id_model.dart';
 import 'package:my_ids/providers/auth_provider.dart';
 import 'package:my_ids/providers/bottom_bar_provider.dart';
 import 'package:my_ids/providers/ids_provider.dart';
-import 'package:my_ids/screens/auth/auth_screen.dart';
+import 'package:my_ids/screens/auth/login_screen.dart';
+import 'package:my_ids/screens/auth/register_screen.dart';
 import 'package:my_ids/screens/home/home_screen.dart';
 import 'package:my_ids/theme.dart' as Theme;
 import 'package:my_ids/routes.dart' as Routes;
@@ -60,7 +61,7 @@ class MyApp extends StatelessWidget {
           theme: Theme.themeData,
           onGenerateTitle: (ctx) => S.of(ctx).appTitle,
           routes: Routes.routes,
-          initialRoute: HomeScreen.routeName,
+          initialRoute: LoginScreen.routeName,
         ),
       ),
     );

@@ -6,15 +6,6 @@ class AuthProvider with ChangeNotifier {
 
   String _password;
 
-  String get password {
-    return _password;
-  }
-
-  set password(String pass) {
-    this._password = pass;
-    notifyListeners();
-  }
-
   Future<void> retrievePassword() async {
     final storage = FlutterSecureStorage();
     String temp = await storage.read(key: _passwordKey);
@@ -22,6 +13,10 @@ class AuthProvider with ChangeNotifier {
       _password = temp;
       notifyListeners();
     }
+  }
+
+  bool checkPassword(String password){
+    return _password == password;
   }
 
   void savePassword(String password) async {

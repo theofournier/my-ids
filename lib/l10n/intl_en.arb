@@ -42,5 +42,8 @@
   "setMasterCode": "Set a master code of 4 to 8 digits",
   "confirmMasterCode": "Confirm master code",
   "next": "Next",
-  "previous": "Previous"
+  "previous": "Previous",
+  "errorMasterCodeWrong": "Wrong master code",
+  "errorMasterCodeInvalid": "Master code must be 4 to 8 digits",
+  "errorMasterCodeConfirmation": "Master code not identical"
 }

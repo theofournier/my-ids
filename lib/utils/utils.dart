@@ -44,4 +44,9 @@ class Utils {
         onUndo();
     });
   }
+
+  static bool isMasterCodeValid(String value) {
+    if (value != null && value.length >= 4 && value.length <= 8) return true;
+    return false;
+  }
 }

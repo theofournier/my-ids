@@ -424,6 +424,33 @@ class S {
       args: [],
     );
   }
+
+  String get errorMasterCodeWrong {
+    return Intl.message(
+      'Wrong master code',
+      name: 'errorMasterCodeWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get errorMasterCodeInvalid {
+    return Intl.message(
+      'Master code must be 4 to 8 digits',
+      name: 'errorMasterCodeInvalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get errorMasterCodeConfirmation {
+    return Intl.message(
+      'Master code not identical',
+      name: 'errorMasterCodeConfirmation',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
