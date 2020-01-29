@@ -38,6 +38,7 @@ class _CodeWidgetState extends State<CodeWidget> {
                 widget.title,
                 textAlign: TextAlign.center,
                 style: TextStyle(
+                  color: Colors.white,
                   fontFamily: "Nunito",
                   fontWeight: FontWeight.w600,
                   fontSize: 30,
@@ -53,7 +54,8 @@ class _CodeWidgetState extends State<CodeWidget> {
           Text(
             _errorMessage,
             style: TextStyle(
-              color: Theme.of(context).errorColor,
+              color: Colors.white,
+              fontWeight: FontWeight.bold
             ),
           ),
         if (_isLoading) CircularProgressIndicator(),
@@ -115,6 +117,7 @@ class _CodeWidgetState extends State<CodeWidget> {
       String temp = widget.validator(_password);
       if (temp != null) {
         setState(() {
+          _password = "";
           _errorMessage = temp;
           _isLoading = false;
         });
@@ -177,7 +180,7 @@ class _CodeIcon extends StatelessWidget {
       width: 20,
       height: 20,
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor,
+        color: Colors.white,
         shape: BoxShape.circle,
       ),
     );
@@ -197,11 +200,12 @@ class _CodeButton extends StatelessWidget {
 
   Widget _buildChild() {
     if (icon != null) {
-      return Icon(icon);
+      return Icon(icon, color: Colors.white,);
     }
     return Text(
       title,
       style: TextStyle(
+        color: Colors.white,
         fontSize: 25,
       ),
     );

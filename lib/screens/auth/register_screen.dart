@@ -3,7 +3,6 @@ import 'package:my_ids/generated/l10n.dart';
 import 'package:my_ids/providers/auth_provider.dart';
 import 'package:my_ids/screens/auth/widgets/code_widget.dart';
 import 'package:my_ids/screens/auth/widgets/welcome_widget.dart';
-import 'package:my_ids/screens/home/home_screen.dart';
 import 'package:my_ids/utils/utils.dart';
 import 'package:provider/provider.dart';
 
@@ -22,21 +21,34 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Material(
       color: Colors.white,
-      child: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            if (_activeTab > 0)
-              IconButton(
-                icon: Icon(Icons.arrow_back),
-                onPressed: () {
-                  setState(() {
-                    _activeTab -= 1;
-                  });
-                },
-              ),
-            Expanded(child: _buildContent()),
-          ],
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Theme.of(context).primaryColorLight,
+              Theme.of(context).primaryColor,
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            stops: [0, 1],
+          ),
+        ),
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              if (_activeTab > 0)
+                IconButton(
+                  icon: Icon(Icons.arrow_back, color: Colors.white,),
+                  onPressed: () {
+                    setState(() {
+                      _activeTab -= 1;
+                    });
+                  },
+                ),
+              Expanded(child: _buildContent()),
+            ],
+          ),
         ),
       ),
     );

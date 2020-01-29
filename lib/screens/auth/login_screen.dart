@@ -20,48 +20,62 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Material(
       color: Colors.white,
-      child: SafeArea(
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: 40,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  S.of(context).appTitle,
-                  style: TextStyle(
-                    fontFamily: "Nunito",
-                    fontWeight: FontWeight.bold,
-                    fontSize: 50,
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Theme.of(context).primaryColorLight,
+              Theme.of(context).primaryColor,
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            stops: [0, 1],
+          ),
+        ),
+        child: SafeArea(
+          child: Column(
+            children: <Widget>[
+              SizedBox(height: 40,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    S.of(context).appTitle,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: "Nunito",
+                      fontWeight: FontWeight.bold,
+                      fontSize: 50,
+                    ),
                   ),
-                ),
-                SizedBox(width: 20,),
-                Image.asset(
-                  "assets/images/logo_primary.png",
-                  height: 50,
-                  width: 50,
-                  fit: BoxFit.contain,
-                ),
-              ],
-            ),
-            Expanded(
-              child: CodeWidget(
-                key: Key("LOGIN"),
-                validator: (value) {
-                  if (!Utils.isMasterCodeValid(value))
-                    return S.of(context).errorMasterCodeInvalid;
-                  if (!Provider.of<AuthProvider>(context, listen: false)
-                      .checkPassword(value))
-                    return S.of(context).errorMasterCodeWrong;
-                  return null;
-                },
-                onDone: (password) {
-                  Provider.of<AuthProvider>(context, listen: false)
-                      .login();
-                },
+                  SizedBox(width: 20,),
+                  Image.asset(
+                    "assets/images/logo_white.png",
+                    height: 50,
+                    width: 50,
+                    fit: BoxFit.contain,
+                  ),
+                ],
               ),
-            ),
-          ],
+              Expanded(
+                child: CodeWidget(
+                  key: Key("LOGIN"),
+                  validator: (value) {
+                    if (!Utils.isMasterCodeValid(value))
+                      return S.of(context).errorMasterCodeInvalid;
+                    if (!Provider.of<AuthProvider>(context, listen: false)
+                        .checkPassword(value))
+                      return S.of(context).errorMasterCodeWrong;
+                    return null;
+                  },
+                  onDone: (password) {
+                    Provider.of<AuthProvider>(context, listen: false)
+                        .login();
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

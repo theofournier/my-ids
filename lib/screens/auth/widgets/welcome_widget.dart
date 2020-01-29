@@ -12,7 +12,21 @@ class WelcomeWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         SizedBox(
-          height: 100,
+          height: 50,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image.asset(
+              "assets/images/logo_white.png",
+              height: 50,
+              width: 50,
+              fit: BoxFit.contain,
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 10,
         ),
         Text(
           "${S.of(context).welcomeOn} ${S.of(context).appTitle}",
@@ -20,7 +34,7 @@ class WelcomeWidget extends StatelessWidget {
             fontFamily: "Nunito",
             fontWeight: FontWeight.bold,
             fontSize: 50,
-            color: Theme.of(context).primaryColor,
+            color: Colors.white,
           ),
         ),
         SizedBox(
@@ -29,6 +43,7 @@ class WelcomeWidget extends StatelessWidget {
         Text(
           S.of(context).firstEnterMasterCode,
           style: TextStyle(
+            color: Colors.white,
             fontSize: 20,
           ),
         ),
@@ -38,6 +53,7 @@ class WelcomeWidget extends StatelessWidget {
         Text(
           S.of(context).warningMasterCode,
           style: TextStyle(
+            color: Colors.white,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -51,9 +67,9 @@ class WelcomeWidget extends StatelessWidget {
               onPressed: onNext,
               child: Row(
                 children: <Widget>[
-                  Text(S.of(context).next.toUpperCase(), style: TextStyle(color: Theme.of(context).primaryColor),),
+                  Text(S.of(context).next.toUpperCase(), style: TextStyle(color: Theme.of(context).accentColor),),
                   SizedBox(width: 8,),
-                  Icon(Icons.arrow_forward, color: Theme.of(context).primaryColor,),
+                  Icon(Icons.arrow_forward, color: Theme.of(context).accentColor,),
                 ],
               ),
             ),
