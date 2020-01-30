@@ -451,6 +451,69 @@ class S {
       args: [],
     );
   }
+
+  String get masterCodeSaved {
+    return Intl.message(
+      'Master code saved',
+      name: 'masterCodeSaved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get biometricsRequestTitle {
+    return Intl.message(
+      'You can also connect with your biometrics data',
+      name: 'biometricsRequestTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get biometricsRequestDialog {
+    return Intl.message(
+      'Scan your biometric to authenticate',
+      name: 'biometricsRequestDialog',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get accept {
+    return Intl.message(
+      'Accept',
+      name: 'accept',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get skip {
+    return Intl.message(
+      'Skip',
+      name: 'skip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get biometricsLater {
+    return Intl.message(
+      'You can add biometric authentication later in the profile',
+      name: 'biometricsLater',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get errorBiometricsAuthentication {
+    return Intl.message(
+      'Impossible to connect you with biometric data',
+      name: 'errorBiometricsAuthentication',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

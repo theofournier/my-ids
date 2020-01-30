@@ -45,5 +45,12 @@
   "previous": "Previous",
   "errorMasterCodeWrong": "Wrong master code",
   "errorMasterCodeInvalid": "Master code must be 4 to 8 digits",
-  "errorMasterCodeConfirmation": "Master code not identical"
+  "errorMasterCodeConfirmation": "Master code not identical",
+  "masterCodeSaved": "Master code saved",
+  "biometricsRequestTitle": "You can also connect with your biometrics data",
+  "biometricsRequestDialog": "Scan your biometric to authenticate",
+  "accept": "Accept",
+  "skip": "Skip",
+  "biometricsLater": "You can add biometric authentication later in the profile",
+  "errorBiometricsAuthentication": "Impossible to connect you with biometric data"
 }

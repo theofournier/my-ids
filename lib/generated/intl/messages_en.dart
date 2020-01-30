@@ -21,8 +21,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "accept" : MessageLookupByLibrary.simpleMessage("Accept"),
     "addIdItem" : MessageLookupByLibrary.simpleMessage("Add ID item"),
     "appTitle" : MessageLookupByLibrary.simpleMessage("My IDs"),
+    "biometricsLater" : MessageLookupByLibrary.simpleMessage("You can add biometric authentication later in the profile"),
+    "biometricsRequestDialog" : MessageLookupByLibrary.simpleMessage("Scan your biometric to authenticate"),
+    "biometricsRequestTitle" : MessageLookupByLibrary.simpleMessage("You can also connect with your biometrics data"),
     "bottomBarIDs" : MessageLookupByLibrary.simpleMessage("IDs"),
     "bottomBarProfile" : MessageLookupByLibrary.simpleMessage("Profile"),
     "cancel" : MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -33,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "created" : MessageLookupByLibrary.simpleMessage("Created"),
     "delete" : MessageLookupByLibrary.simpleMessage("Delete"),
     "editId" : MessageLookupByLibrary.simpleMessage("Edit ID"),
+    "errorBiometricsAuthentication" : MessageLookupByLibrary.simpleMessage("Impossible to connect you with biometric data"),
     "errorMasterCodeConfirmation" : MessageLookupByLibrary.simpleMessage("Master code not identical"),
     "errorMasterCodeInvalid" : MessageLookupByLibrary.simpleMessage("Master code must be 4 to 8 digits"),
     "errorMasterCodeWrong" : MessageLookupByLibrary.simpleMessage("Wrong master code"),
@@ -45,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "idRemoved" : MessageLookupByLibrary.simpleMessage("ID removed"),
     "idUpdated" : MessageLookupByLibrary.simpleMessage("ID updated!"),
     "isRequired" : MessageLookupByLibrary.simpleMessage("is required"),
+    "masterCodeSaved" : MessageLookupByLibrary.simpleMessage("Master code saved"),
     "name" : MessageLookupByLibrary.simpleMessage("Name"),
     "newId" : MessageLookupByLibrary.simpleMessage("New ID"),
     "next" : MessageLookupByLibrary.simpleMessage("Next"),
@@ -62,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "searchId" : MessageLookupByLibrary.simpleMessage("Search an ID"),
     "setMasterCode" : MessageLookupByLibrary.simpleMessage("Set a master code of 4 to 8 digits"),
     "settings" : MessageLookupByLibrary.simpleMessage("Settings"),
+    "skip" : MessageLookupByLibrary.simpleMessage("Skip"),
     "title" : MessageLookupByLibrary.simpleMessage("Title"),
     "undo" : MessageLookupByLibrary.simpleMessage("Undo"),
     "updated" : MessageLookupByLibrary.simpleMessage("Updated"),

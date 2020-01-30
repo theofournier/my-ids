@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:local_auth/local_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:my_ids/utils/hive_keys.dart';
 
 class AuthProvider with ChangeNotifier {
@@ -35,6 +37,52 @@ class AuthProvider with ChangeNotifier {
   void savePassword(String password) {
     Hive.box(HiveKeys.authBoxName).put(HiveKeys.passwordKey, password);
     _password = password;
-    notifyListeners();
+    //notifyListeners();
+  }
+
+  Future<bool> checkBiometrics() async {
+    final LocalAuthentication auth = LocalAuthentication();
+    List<BiometricType> availableBiometrics;
+    try {
+      availableBiometrics = await auth.getAvailableBiometrics();
+    } on PlatformException catch (e) {
+      print(e);
+    }
+    print(availableBiometrics);
+    bool canCheckBiometrics = false;
+    try {
+      canCheckBiometrics = await auth.canCheckBiometrics;
+    } on PlatformException catch (e) {
+      print(e);
+    }
+    return canCheckBiometrics;
+  }
+
+  Future<void> authenticateBiometrics(String title, Function onError, Function onSuccess) async{
+    final LocalAuthentication auth = LocalAuthentication();
+    bool authenticated = false;
+    try {
+      authenticated = await auth.authenticateWithBiometrics(
+          localizedReason: title,
+          useErrorDialogs: true,
+          stickyAuth: true);
+    } on PlatformException catch (e) {
+      print(e);
+      onError();
+    }
+
+    if(authenticated){
+      onSuccess();
+    } else {
+      onError();
+    }
+  }
+
+  void saveBiometricEnable(bool isEnable){
+    Hive.box(HiveKeys.authBoxName).put(HiveKeys.isBiometricEnabledKey, isEnable);
+  }
+
+  bool checkBiometricEnable(){
+    return Hive.box(HiveKeys.authBoxName).get(HiveKeys.isBiometricEnabledKey) ?? false;
   }
 }

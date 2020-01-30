@@ -45,5 +45,12 @@
   "previous": "Précédent",
   "errorMasterCodeWrong": "Mauvais mot de passe maître",
   "errorMasterCodeInvalid": "Mot de passe maître doit être de 4 à 8 chiffres",
-  "errorMasterCodeConfirmation": "Mot de passes maître non identique"
+  "errorMasterCodeConfirmation": "Mot de passes maître non identique",
+  "masterCodeSaved": "Mot de passe maître sauvegardé",
+  "biometricsRequestTitle": "Vous pouvez aussi vous connecter avec vos données biometriques",
+  "biometricsRequestDialog": "Scannez votre biometrique pour vous authentifiez",
+  "accept": "Accepter",
+  "skip": "Passer",
+  "biometricsLater": "Vous pouvez ajouter l'authentification par biometrique plus tard dans le profil",
+  "errorBiometricsAuthentication": "Impossible de vous connecter avec vos données biometriques"
 }

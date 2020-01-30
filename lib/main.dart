@@ -35,6 +35,7 @@ void main() async {
       encryptionKey: Uint8List.fromList(encryptionKey.codeUnits));
   await Hive.openBox(HiveKeys.authBoxName,
       encryptionKey: Uint8List.fromList(encryptionKey.codeUnits));
+  //await Hive.box(HiveKeys.authBoxName).clear();
   runApp(MyApp());
 }
 

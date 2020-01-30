@@ -5,12 +5,14 @@ class CodeWidget extends StatefulWidget {
   final String title;
   final Function(String password) onDone;
   final String Function(String value) validator;
+  final bool endSpacing;
 
   CodeWidget({
     Key key,
     this.title,
     this.onDone,
     this.validator,
+    this.endSpacing = true,
   }) : super(key: key);
 
   @override
@@ -53,10 +55,7 @@ class _CodeWidgetState extends State<CodeWidget> {
         if (_errorMessage != null)
           Text(
             _errorMessage,
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold
-            ),
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
         if (_isLoading) CircularProgressIndicator(),
         if (!_isLoading)
@@ -64,9 +63,10 @@ class _CodeWidgetState extends State<CodeWidget> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: _buildCodeButtons(),
           ),
-        SizedBox(
-          height: 50,
-        ),
+        if (widget.endSpacing)
+          SizedBox(
+            height: 50,
+          ),
       ],
     );
   }
@@ -200,7 +200,10 @@ class _CodeButton extends StatelessWidget {
 
   Widget _buildChild() {
     if (icon != null) {
-      return Icon(icon, color: Colors.white,);
+      return Icon(
+        icon,
+        color: Colors.white,
+      );
     }
     return Text(
       title,

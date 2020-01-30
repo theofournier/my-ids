@@ -21,8 +21,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "accept" : MessageLookupByLibrary.simpleMessage("Accepter"),
     "addIdItem" : MessageLookupByLibrary.simpleMessage("Ajouter un ID"),
     "appTitle" : MessageLookupByLibrary.simpleMessage("Mes IDs"),
+    "biometricsLater" : MessageLookupByLibrary.simpleMessage("Vous pouvez ajouter l\'authentification par biometrique plus tard dans le profil"),
+    "biometricsRequestDialog" : MessageLookupByLibrary.simpleMessage("Scannez votre biometrique pour vous authentifiez"),
+    "biometricsRequestTitle" : MessageLookupByLibrary.simpleMessage("Vous pouvez aussi vous connecter avec vos données biometriques"),
     "bottomBarIDs" : MessageLookupByLibrary.simpleMessage("IDs"),
     "bottomBarProfile" : MessageLookupByLibrary.simpleMessage("Profil"),
     "cancel" : MessageLookupByLibrary.simpleMessage("Annuler"),
@@ -33,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "created" : MessageLookupByLibrary.simpleMessage("Créé"),
     "delete" : MessageLookupByLibrary.simpleMessage("Supprimer"),
     "editId" : MessageLookupByLibrary.simpleMessage("Modifier ID"),
+    "errorBiometricsAuthentication" : MessageLookupByLibrary.simpleMessage("Impossible de vous connecter avec vos données biometriques"),
     "errorMasterCodeConfirmation" : MessageLookupByLibrary.simpleMessage("Mot de passes maître non identique"),
     "errorMasterCodeInvalid" : MessageLookupByLibrary.simpleMessage("Mot de passe maître doit être de 4 à 8 chiffres"),
     "errorMasterCodeWrong" : MessageLookupByLibrary.simpleMessage("Mauvais mot de passe maître"),
@@ -45,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "idRemoved" : MessageLookupByLibrary.simpleMessage("ID supprimé"),
     "idUpdated" : MessageLookupByLibrary.simpleMessage("ID mise à jour !"),
     "isRequired" : MessageLookupByLibrary.simpleMessage("est requis"),
+    "masterCodeSaved" : MessageLookupByLibrary.simpleMessage("Mot de passe maître sauvegardé"),
     "name" : MessageLookupByLibrary.simpleMessage("Nom"),
     "newId" : MessageLookupByLibrary.simpleMessage("Nouvel ID"),
     "next" : MessageLookupByLibrary.simpleMessage("Suivant"),
@@ -62,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "searchId" : MessageLookupByLibrary.simpleMessage("Rechercher un ID"),
     "setMasterCode" : MessageLookupByLibrary.simpleMessage("Entrez un mot de passe maître de 4 à 8 chiffres"),
     "settings" : MessageLookupByLibrary.simpleMessage("Paramètres"),
+    "skip" : MessageLookupByLibrary.simpleMessage("Passer"),
     "title" : MessageLookupByLibrary.simpleMessage("Titre"),
     "undo" : MessageLookupByLibrary.simpleMessage("Annuler"),
     "updated" : MessageLookupByLibrary.simpleMessage("Mise à jour"),
