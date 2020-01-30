@@ -37,7 +37,6 @@ class AuthProvider with ChangeNotifier {
   void savePassword(String password) {
     Hive.box(HiveKeys.authBoxName).put(HiveKeys.passwordKey, password);
     _password = password;
-    //notifyListeners();
   }
 
   Future<bool> checkBiometrics() async {
