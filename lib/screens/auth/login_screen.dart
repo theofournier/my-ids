@@ -1,11 +1,9 @@
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:my_ids/generated/l10n.dart';
 import 'package:my_ids/providers/auth_provider.dart';
 import 'package:my_ids/screens/auth/widgets/code_widget.dart';
-import 'package:my_ids/screens/auth/widgets/welcome_widget.dart';
-import 'package:my_ids/screens/home/home_screen.dart';
-import 'package:my_ids/theme.dart';
 import 'package:my_ids/utils/utils.dart';
 import 'package:provider/provider.dart';
 
@@ -91,25 +89,39 @@ class _LoginScreenState extends State<LoginScreen> {
               if (_isBiometricsEnable)
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20),
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.fingerprint,
-                      color: Colors.white,
-                      size: 40,
-                    ),
-                    onPressed: () {
-                      Provider.of<AuthProvider>(context, listen: false)
-                          .authenticateBiometrics(
-                        S.of(context).biometricsRequestDialog,
-                        () => Flushbar(
-                          message: S.of(context).errorBiometricsAuthentication,
-                          duration: Duration(seconds: 5),
-                        )..show(context),
-                        () {
-                          Provider.of<AuthProvider>(context, listen: false)
-                              .login();
-                        },
-                      );
+                  child: FutureBuilder(
+                    future: Provider.of<AuthProvider>(context, listen: false)
+                        .availableBiometrics(),
+                    builder: (ctx, snapshot) {
+                      if (snapshot.hasData) {
+                        IconData icon = Icons.fingerprint;
+                        if(snapshot.data.contains(BiometricType.face)){
+                          icon = Icons.face;
+                        }
+                        return IconButton(
+                          onPressed: () {
+                            Provider.of<AuthProvider>(context, listen: false)
+                                .authenticateBiometrics(
+                              S.of(context).biometricsRequestDialog,
+                                  () => Flushbar(
+                                message: S.of(context).errorBiometricsAuthentication,
+                                duration: Duration(seconds: 5),
+                              )..show(context),
+                                  () {
+                                Provider.of<AuthProvider>(context, listen: false)
+                                    .login();
+                              },
+                            );
+                          },
+                          icon: Icon(
+                            icon,
+                            color: Theme.of(context).accentColor,
+                            size: 40,
+                          ),
+                        );
+                      } else {
+                        return Container();
+                      }
                     },
                   ),
                 )

@@ -41,13 +41,6 @@ class AuthProvider with ChangeNotifier {
 
   Future<bool> checkBiometrics() async {
     final LocalAuthentication auth = LocalAuthentication();
-    List<BiometricType> availableBiometrics;
-    try {
-      availableBiometrics = await auth.getAvailableBiometrics();
-    } on PlatformException catch (e) {
-      print(e);
-    }
-    print(availableBiometrics);
     bool canCheckBiometrics = false;
     try {
       canCheckBiometrics = await auth.canCheckBiometrics;
@@ -55,6 +48,17 @@ class AuthProvider with ChangeNotifier {
       print(e);
     }
     return canCheckBiometrics;
+  }
+
+  Future<List<BiometricType>> availableBiometrics() async{
+    final LocalAuthentication auth = LocalAuthentication();
+    List<BiometricType> availableBiometrics = [];
+    try {
+      availableBiometrics = await auth.getAvailableBiometrics();
+    } on PlatformException catch (e) {
+      print(e);
+    }
+    return availableBiometrics;
   }
 
   Future<void> authenticateBiometrics(String title, Function onError, Function onSuccess) async{
