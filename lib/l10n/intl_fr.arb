@@ -52,5 +52,7 @@
   "accept": "Accepter",
   "skip": "Passer",
   "biometricsLater": "Vous pouvez ajouter l'authentification par biometrique plus tard dans le profil",
-  "errorBiometricsAuthentication": "Impossible de vous connecter avec vos données biometriques"
+  "errorBiometricsAuthentication": "Impossible de vous connecter avec vos données biometriques",
+  "errorBiometricsUnavailable": "Biométrique non disponible",
+  "profileBiometricSwitch": "Biometrique activé"
 }

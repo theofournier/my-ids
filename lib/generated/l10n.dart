@@ -514,6 +514,24 @@ class S {
       args: [],
     );
   }
+
+  String get errorBiometricsUnavailable {
+    return Intl.message(
+      'Biometric unavailable',
+      name: 'errorBiometricsUnavailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get profileBiometricSwitch {
+    return Intl.message(
+      'Biometric enable',
+      name: 'profileBiometricSwitch',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

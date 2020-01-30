@@ -52,5 +52,7 @@
   "accept": "Accept",
   "skip": "Skip",
   "biometricsLater": "You can add biometric authentication later in the profile",
-  "errorBiometricsAuthentication": "Impossible to connect you with biometric data"
+  "errorBiometricsAuthentication": "Impossible to connect you with biometric data",
+  "errorBiometricsUnavailable": "Biometric unavailable",
+  "profileBiometricSwitch": "Biometric enable"
 }
