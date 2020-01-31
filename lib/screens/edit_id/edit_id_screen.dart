@@ -181,6 +181,18 @@ class _EditIdScreenState extends State<EditIdScreen> {
     );
   }
 
+  void _onReorder(int oldIndex, int newIndex) {
+    print("$oldIndex , $newIndex , ${_data.items.length}");
+    if (newIndex >= 0 && newIndex < _data.items.length) {
+      setState(
+        () {
+          final IdItemModel item = _data.items.removeAt(oldIndex);
+          _data.items.insert(newIndex, item);
+        },
+      );
+    }
+  }
+
   Widget _buildIdItemList() {
     return _data.items != null && _data.items.isNotEmpty
         ? Column(
@@ -195,6 +207,14 @@ class _EditIdScreenState extends State<EditIdScreen> {
                       setState(() {
                         _data.items.remove(item);
                       });
+                    },
+                    onDragUp: () {
+                      int oldIndex = _data.items.indexOf(item);
+                      _onReorder(oldIndex, oldIndex - 1);
+                    },
+                    onDragDown: () {
+                      int oldIndex = _data.items.indexOf(item);
+                      _onReorder(oldIndex, oldIndex + 1);
                     },
                   ),
                 )

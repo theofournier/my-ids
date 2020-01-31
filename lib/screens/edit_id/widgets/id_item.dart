@@ -7,8 +7,10 @@ import 'package:my_ids/widgets/default_textformfield.dart';
 class IdItem extends StatelessWidget {
   final IdItemModel idItemModel;
   final Function onDelete;
+  final Function onDragDown;
+  final Function onDragUp;
 
-  IdItem({Key key, this.idItemModel, this.onDelete}) : super(key: key);
+  IdItem({Key key, this.idItemModel, this.onDelete, this.onDragDown, this.onDragUp}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +86,18 @@ class IdItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_downward,
+                    ),
+                    onPressed: onDragDown,
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_upward,
+                    ),
+                    onPressed: onDragUp,
+                  ),
                   IconButton(
                     icon: Icon(
                       Icons.remove_circle_outline,
