@@ -38,7 +38,7 @@ class DefaultTextFormField extends StatelessWidget {
     this.togglePasswordVisibility,
     this.textCapitalization = TextCapitalization.none,
     this.minLines = 1,
-    this.maxLines = 1,
+    this.maxLines,
     this.textSize = 16,
   }) : super(key: key);
 
@@ -55,9 +55,8 @@ class DefaultTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       textInputAction: textInputAction,
       initialValue: initialValue,
-      minLines: minLines,
-      maxLines: maxLines,
-
+      minLines: passwordIsVisible != null && !passwordIsVisible ? 1 : minLines,
+      maxLines: passwordIsVisible != null && !passwordIsVisible ? 1 : maxLines,
       decoration: InputDecoration(
         labelText: labelText,
         labelStyle: TextStyle(fontSize: textSize),
