@@ -22,7 +22,6 @@ class NoteWidget extends StatelessWidget {
         child: DefaultTextFormField(
           labelText: S.of(context).note,
           keyboardType: TextInputType.multiline,
-          textInputAction: TextInputAction.none,
           initialValue: value,
           onSaved: onSaved,
           minLines: 5,
