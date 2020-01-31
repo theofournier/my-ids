@@ -14,6 +14,7 @@ import 'package:my_ids/screens/auth/login_screen.dart';
 import 'package:my_ids/screens/auth/register_screen.dart';
 import 'package:my_ids/screens/home/home_screen.dart';
 import 'package:my_ids/screens/splash/splash_screen.dart';
+import 'package:my_ids/screens/update_master_code/update_master_code_screen.dart';
 import 'package:my_ids/theme.dart' as Theme;
 import 'package:my_ids/routes.dart' as Routes;
 import 'package:my_ids/utils/hive_keys.dart';

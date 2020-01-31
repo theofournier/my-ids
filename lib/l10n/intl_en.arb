@@ -54,5 +54,11 @@
   "biometricsLater": "You can add biometric authentication later in the profile",
   "errorBiometricsAuthentication": "Impossible to connect you with biometric data",
   "errorBiometricsUnavailable": "Biometric unavailable",
-  "profileBiometricSwitch": "Biometric enable"
+  "profileBiometricSwitch": "Biometric enable",
+  "updateMasterCode": "Update master code",
+  "updateMasterCodeSuccessTitle": "Master code updated",
+  "updateMasterCodeSuccessMessage": "Your master code has been updated successfully.",
+  "currentMasterCode": "Current master code",
+  "newMasterCode": "New master code",
+  "updateMasterCodeErrorTitle": "Wrong current master code"
 }

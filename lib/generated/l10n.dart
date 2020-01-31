@@ -532,6 +532,60 @@ class S {
       args: [],
     );
   }
+
+  String get updateMasterCode {
+    return Intl.message(
+      'Update master code',
+      name: 'updateMasterCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get updateMasterCodeSuccessTitle {
+    return Intl.message(
+      'Master code updated',
+      name: 'updateMasterCodeSuccessTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get updateMasterCodeSuccessMessage {
+    return Intl.message(
+      'Your master code has been updated successfully.',
+      name: 'updateMasterCodeSuccessMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get currentMasterCode {
+    return Intl.message(
+      'Current master code',
+      name: 'currentMasterCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get newMasterCode {
+    return Intl.message(
+      'New master code',
+      name: 'newMasterCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get updateMasterCodeErrorTitle {
+    return Intl.message(
+      'Wrong current master code',
+      name: 'updateMasterCodeErrorTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

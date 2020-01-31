@@ -8,6 +8,7 @@ import 'package:my_ids/screens/ids/ids_screen.dart';
 import 'package:my_ids/screens/profile/profile_screen.dart';
 import 'package:my_ids/screens/settings/settings_screen.dart';
 import 'package:my_ids/screens/splash/splash_screen.dart';
+import 'package:my_ids/screens/update_master_code/update_master_code_screen.dart';
 
 final routes = <String, WidgetBuilder> {
   SplashScreen.routeName: (ctx) => SplashScreen(),
@@ -19,4 +20,5 @@ final routes = <String, WidgetBuilder> {
   EditIdScreen.routeName: (ctx) => EditIdScreen(),
   RegisterScreen.routeName: (ctx) => RegisterScreen(),
   LoginScreen.routeName: (ctx) => LoginScreen(),
+  UpdateMasterCodeScreen.routeName: (ctx) => UpdateMasterCodeScreen(),
 };
