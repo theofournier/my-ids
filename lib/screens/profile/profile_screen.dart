@@ -1,4 +1,5 @@
 import 'package:flushbar/flushbar.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:my_ids/generated/l10n.dart';
 import 'package:my_ids/providers/auth_provider.dart';
@@ -43,57 +44,60 @@ class _ProfileScreenState extends State<ProfileScreen> {
             SizedBox(
               height: 40,
             ),
-            SwitchListTile(
-              title: Text(
-                S.of(context).profileBiometricSwitch,
-                style: TextStyle(
-                  fontSize: 18.0,
+            if (!kIsWeb)
+              SwitchListTile(
+                title: Text(
+                  S.of(context).profileBiometricSwitch,
+                  style: TextStyle(
+                    fontSize: 18.0,
+                  ),
+                ),
+                contentPadding: const EdgeInsets.all(0),
+                value: _biometricEnable,
+                onChanged: (value) async {
+                  if (!await Provider.of<AuthProvider>(context, listen: false)
+                      .checkBiometrics()) {
+                    Flushbar(
+                      message: S.of(context).errorBiometricsUnavailable,
+                      duration: Duration(seconds: 5),
+                    )..show(context);
+                    return;
+                  }
+                  if (!value) {
+                    Provider.of<AuthProvider>(context, listen: false)
+                        .saveBiometricEnable(false);
+                    setState(() {
+                      _biometricEnable = false;
+                    });
+                  } else {
+                    Provider.of<AuthProvider>(context, listen: false)
+                        .authenticateBiometrics(
+                      S.of(context).biometricsRequestDialog,
+                      () => Flushbar(
+                        message: S.of(context).errorBiometricsAuthentication,
+                        duration: Duration(seconds: 5),
+                      )..show(context),
+                      () {
+                        Provider.of<AuthProvider>(context, listen: false)
+                            .saveBiometricEnable(true);
+                        setState(() {
+                          _biometricEnable = true;
+                        });
+                      },
+                    );
+                  }
+                },
+                secondary: Icon(
+                  Icons.fingerprint,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
-              contentPadding: const EdgeInsets.all(0),
-              value: _biometricEnable,
-              onChanged: (value) async{
-                if(!await Provider.of<AuthProvider>(context, listen: false)
-                    .checkBiometrics()){
-                  Flushbar(
-                    message: S.of(context).errorBiometricsUnavailable,
-                    duration: Duration(seconds: 5),
-                  )..show(context);
-                  return;
-                }
-                if (!value) {
-                  Provider.of<AuthProvider>(context, listen: false)
-                      .saveBiometricEnable(false);
-                  setState(() {
-                    _biometricEnable = false;
-                  });
-                } else {
-                  Provider.of<AuthProvider>(context, listen: false)
-                      .authenticateBiometrics(
-                    S.of(context).biometricsRequestDialog,
-                    () => Flushbar(
-                      message: S.of(context).errorBiometricsAuthentication,
-                      duration: Duration(seconds: 5),
-                    )..show(context),
-                    () {
-                      Provider.of<AuthProvider>(context, listen: false)
-                          .saveBiometricEnable(true);
-                      setState(() {
-                        _biometricEnable = true;
-                      });
-                    },
-                  );
-                }
-              },
-              secondary: Icon(
-                Icons.fingerprint,
-                color: Theme.of(context).primaryColor,
-              ),
+            SizedBox(
+              height: 20,
             ),
-            SizedBox(height: 20,),
             ListTile(
-              onTap: () =>
-                  Navigator.of(context).pushNamed(UpdateMasterCodeScreen.routeName),
+              onTap: () => Navigator.of(context)
+                  .pushNamed(UpdateMasterCodeScreen.routeName),
               leading: Icon(
                 Icons.lock_outline,
                 color: Theme.of(context).primaryColor,
@@ -110,7 +114,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             ListTile(
               onTap: () =>
                   Navigator.of(context).pushNamed(SettingsScreen.routeName),

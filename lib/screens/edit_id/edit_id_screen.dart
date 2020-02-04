@@ -182,7 +182,6 @@ class _EditIdScreenState extends State<EditIdScreen> {
   }
 
   void _onReorder(int oldIndex, int newIndex) {
-    print("$oldIndex , $newIndex , ${_data.items.length}");
     if (newIndex >= 0 && newIndex < _data.items.length) {
       setState(
         () {

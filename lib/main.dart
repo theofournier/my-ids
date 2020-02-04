@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -29,11 +31,22 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter<IdModel>(IdModelAdapter());
   Hive.registerAdapter<IdItemModel>(IdItemModelAdapter());
-  final storage = FlutterSecureStorage();
-  String encryptionKey = await storage.read(key: HiveKeys.encryptionKey);
-  if (encryptionKey == null || encryptionKey.isEmpty) {
-    encryptionKey = String.fromCharCodes(Hive.generateSecureKey());
-    await storage.write(key: HiveKeys.encryptionKey, value: encryptionKey);
+  String encryptionKey = String.fromCharCodes(Hive.generateSecureKey());
+  if (kIsWeb) {
+    Box box = await Hive.openBox(HiveKeys.keyBoxName);
+    if(!box.containsKey(HiveKeys.encryptionKey)){
+      box.put(HiveKeys.encryptionKey, encryptionKey);
+    } else {
+      encryptionKey = box.get(HiveKeys.encryptionKey);
+    }
+  } else if (Platform.isIOS || Platform.isAndroid) {
+    final storage = FlutterSecureStorage();
+    String temp = await storage.read(key: HiveKeys.encryptionKey);
+    if (temp == null || temp.isEmpty) {
+      await storage.write(key: HiveKeys.encryptionKey, value: encryptionKey);
+    } else {
+      encryptionKey = temp;
+    }
   }
   await Hive.openBox(HiveKeys.idsBoxName,
       encryptionKey: Uint8List.fromList(encryptionKey.codeUnits));
