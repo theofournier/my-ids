@@ -14,15 +14,18 @@ import 'package:my_ids/screens/auth/login_screen.dart';
 import 'package:my_ids/screens/auth/register_screen.dart';
 import 'package:my_ids/screens/home/home_screen.dart';
 import 'package:my_ids/screens/splash/splash_screen.dart';
-import 'package:my_ids/screens/update_master_code/update_master_code_screen.dart';
 import 'package:my_ids/theme.dart' as Theme;
 import 'package:my_ids/routes.dart' as Routes;
 import 'package:my_ids/utils/hive_keys.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
 import 'generated/l10n.dart';
 
 void main() async {
+  Crashlytics.instance.enableInDevMode = true;
+  FlutterError.onError = Crashlytics.instance.recordFlutterError;
+
   await Hive.initFlutter();
   Hive.registerAdapter<IdModel>(IdModelAdapter());
   Hive.registerAdapter<IdItemModel>(IdItemModelAdapter());
