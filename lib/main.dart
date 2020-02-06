@@ -9,12 +9,15 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:my_ids/models/id_item_model.dart';
 import 'package:my_ids/models/id_model.dart';
+import 'package:my_ids/models/password_generator_model.dart';
 import 'package:my_ids/providers/auth_provider.dart';
 import 'package:my_ids/providers/bottom_bar_provider.dart';
 import 'package:my_ids/providers/ids_provider.dart';
+import 'package:my_ids/providers/password_generator_provider.dart';
 import 'package:my_ids/screens/auth/login_screen.dart';
 import 'package:my_ids/screens/auth/register_screen.dart';
 import 'package:my_ids/screens/home/home_screen.dart';
+import 'package:my_ids/screens/password_generator/password_generator_screen.dart';
 import 'package:my_ids/screens/splash/splash_screen.dart';
 import 'package:my_ids/theme.dart' as Theme;
 import 'package:my_ids/routes.dart' as Routes;
@@ -31,6 +34,7 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter<IdModel>(IdModelAdapter());
   Hive.registerAdapter<IdItemModel>(IdItemModelAdapter());
+  Hive.registerAdapter<PasswordGeneratorModel>(PasswordGeneratorModelAdapter());
   String encryptionKey = String.fromCharCodes(Hive.generateSecureKey());
   if (kIsWeb) {
     Box box = await Hive.openBox(HiveKeys.keyBoxName);
@@ -52,6 +56,8 @@ void main() async {
       encryptionKey: Uint8List.fromList(encryptionKey.codeUnits));
   await Hive.openBox(HiveKeys.authBoxName,
       encryptionKey: Uint8List.fromList(encryptionKey.codeUnits));
+  await Hive.openBox(HiveKeys.passwordGeneratorBoxName,
+      encryptionKey: Uint8List.fromList(encryptionKey.codeUnits));
   runApp(MyApp());
 }
 
@@ -63,6 +69,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(value: BottomBarProvider()),
         ChangeNotifierProvider.value(value: IdsProvider()),
         ChangeNotifierProvider.value(value: AuthProvider()),
+        ChangeNotifierProvider.value(value: PasswordGeneratorProvider()),
       ],
       child: GestureDetector(
         onTap: () {

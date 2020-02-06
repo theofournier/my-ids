@@ -586,6 +586,80 @@ class S {
       args: [],
     );
   }
+
+  String get passwordGenerator {
+    return Intl.message(
+      'Password generator',
+      name: 'passwordGenerator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get copy {
+    return Intl.message(
+      'Copy',
+      name: 'copy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get generate {
+    return Intl.message(
+      'Generate',
+      name: 'generate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get length {
+    return Intl.message(
+      'Length',
+      name: 'length',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get symbols {
+    return Intl.message(
+      'Symbols',
+      name: 'symbols',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get numbers {
+    return Intl.message(
+      'Numbers',
+      name: 'numbers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get lowercase {
+    return Intl.message(
+      'Lowercase',
+      name: 'lowercase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get uppercase {
+    return Intl.message(
+      'Uppercase',
+      name: 'uppercase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the 'symbolsInfo' key
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

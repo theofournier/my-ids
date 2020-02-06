@@ -60,5 +60,14 @@
   "updateMasterCodeSuccessMessage": "Your master code has been updated successfully.",
   "currentMasterCode": "Current master code",
   "newMasterCode": "New master code",
-  "updateMasterCodeErrorTitle": "Wrong current master code"
+  "updateMasterCodeErrorTitle": "Wrong current master code",
+  "passwordGenerator": "Password generator",
+  "copy": "Copy",
+  "generate": "Generate",
+  "length": "Length",
+  "symbols": "Symbols",
+  "numbers": "Numbers",
+  "lowercase": "Lowercase",
+  "uppercase": "Uppercase",
+  "symbolsInfo": "@#=+!£$%&?[](){}"
 }

@@ -60,5 +60,14 @@
   "updateMasterCodeSuccessMessage": "Votre code maître a été mise à jours avec succés.",
   "currentMasterCode": "Code maître actuel",
   "newMasterCode": "Nouveau code maître",
-  "updateMasterCodeErrorTitle": "Mauvais actuel code maître"
+  "updateMasterCodeErrorTitle": "Mauvais actuel code maître",
+  "passwordGenerator": "Générateur de mot de passe",
+  "copy": "Copier",
+  "generate": "Générer",
+  "length": "Taille",
+  "symbols": "Symboles",
+  "numbers": "Nombres",
+  "lowercase": "Minuscule",
+  "uppercase": "Majuscule",
+  "symbolsInfo": "@#=+!£$%&?[](){}"
 }

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:my_ids/generated/l10n.dart';
@@ -48,5 +50,38 @@ class Utils {
   static bool isMasterCodeValid(String value) {
     if (value != null && value.length >= 4 && value.length <= 8) return true;
     return false;
+  }
+
+  static String generatePassword(bool _isWithLowercase, bool _isWithUppercase,
+      bool _isWithNumbers, bool _isWithSymbols, int _numberCharPassword) {
+
+    //Define the allowed chars to use in the password
+    String _lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
+    String _upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    String _numbers = "0123456789";
+    String _special = "@#=+!£\$%&?[](){}";
+
+    //Create the empty string that will contain the allowed chars
+    String _allowedChars = "";
+
+    //Put chars on the allowed ones based on the input values
+    _allowedChars += (_isWithLowercase ? _lowerCaseLetters : '');
+    _allowedChars += (_isWithUppercase ? _upperCaseLetters : '');
+    _allowedChars += (_isWithNumbers ? _numbers : '');
+    _allowedChars += (_isWithSymbols ? _special : '');
+
+    int i = 0;
+    String _result = "";
+
+    //Create password
+    while (i < _numberCharPassword.round()) {
+      //Get random int
+      int randomInt = Random.secure().nextInt(_allowedChars.length);
+      //Get random char and append it to the password
+      _result += _allowedChars[randomInt];
+      i++;
+    }
+
+    return _result;
   }
 }

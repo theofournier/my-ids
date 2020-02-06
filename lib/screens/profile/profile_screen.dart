@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:my_ids/generated/l10n.dart';
 import 'package:my_ids/providers/auth_provider.dart';
+import 'package:my_ids/screens/password_generator/password_generator_screen.dart';
 import 'package:my_ids/screens/settings/settings_screen.dart';
 import 'package:my_ids/screens/update_master_code/update_master_code_screen.dart';
 import 'package:provider/provider.dart';
@@ -105,6 +106,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
               contentPadding: const EdgeInsets.all(0),
               title: Text(
                 S.of(context).updateMasterCode,
+                style: TextStyle(
+                  fontSize: 18.0,
+                ),
+              ),
+              trailing: Icon(
+                Icons.keyboard_arrow_right,
+                color: Colors.black,
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            ListTile(
+              onTap: () =>
+                  Navigator.of(context).pushNamed(PasswordGeneratorScreen.routeName),
+              leading: Icon(
+                Icons.vpn_key,
+                color: Theme.of(context).primaryColor,
+              ),
+              contentPadding: const EdgeInsets.all(0),
+              title: Text(
+                S.of(context).passwordGenerator,
                 style: TextStyle(
                   fontSize: 18.0,
                 ),

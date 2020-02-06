@@ -5,6 +5,7 @@ import 'package:my_ids/screens/edit_id/edit_id_screen.dart';
 import 'package:my_ids/screens/home/home_screen.dart';
 import 'package:my_ids/screens/id/id_screen.dart';
 import 'package:my_ids/screens/ids/ids_screen.dart';
+import 'package:my_ids/screens/password_generator/password_generator_screen.dart';
 import 'package:my_ids/screens/profile/profile_screen.dart';
 import 'package:my_ids/screens/settings/settings_screen.dart';
 import 'package:my_ids/screens/splash/splash_screen.dart';
@@ -21,4 +22,5 @@ final routes = <String, WidgetBuilder> {
   RegisterScreen.routeName: (ctx) => RegisterScreen(),
   LoginScreen.routeName: (ctx) => LoginScreen(),
   UpdateMasterCodeScreen.routeName: (ctx) => UpdateMasterCodeScreen(),
+  PasswordGeneratorScreen.routeName: (ctx) => PasswordGeneratorScreen(),
 };
