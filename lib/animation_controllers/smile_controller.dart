@@ -17,7 +17,7 @@ class SmileController extends FlareController {
   double _currentSmile = 0;
 
   ///time used to smooth the fill line movement
-  double _smoothTime = 5;
+  double _smoothTime = 1.5;
 
   void initialize(FlutterActorArtboard artboard) {
     //get the reference here on start to our animations and artboard

@@ -24,7 +24,7 @@ class _LengthSliderWidgetState extends State<LengthSliderWidget> {
   @override
   void didChangeDependencies() {
     if(!_init){
-      _updateSmile(Provider.of<PasswordGeneratorProvider>(context).passwordGeneratorModel?.length ?? PasswordGeneratorModel.INIT_LENGTH);
+      _updateSmile(Provider.of<PasswordGeneratorProvider>(context, listen: false).passwordGeneratorModel?.length ?? PasswordGeneratorModel.INIT_LENGTH);
     }
     _init = true;
     super.didChangeDependencies();
@@ -67,22 +67,18 @@ class _LengthSliderWidgetState extends State<LengthSliderWidget> {
                 ),
               ],
             ),
-            Consumer<PasswordGeneratorProvider>(
-              builder: (ctx, passwordGeneratorProvider, ch) {
-                return ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxHeight: 100,
-                    maxWidth: 100,
-                  ),
-                  child: FlareActor(
-                    "assets/animations/Smile.flr",
-                    controller: _smileController,
-                    fit: BoxFit.contain,
-                    animation: "Smile",
-                    artboard: "Artboard",
-                  ),
-                );
-              },
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                maxHeight: 50,
+                maxWidth: 50,
+              ),
+              child: FlareActor(
+                "assets/animations/Smile.flr",
+                controller: _smileController,
+                fit: BoxFit.contain,
+                animation: "Smile",
+                artboard: "Artboard",
+              ),
             ),
           ],
         ),
