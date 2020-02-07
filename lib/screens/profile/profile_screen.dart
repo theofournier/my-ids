@@ -3,6 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:my_ids/generated/l10n.dart';
 import 'package:my_ids/providers/auth_provider.dart';
+import 'package:my_ids/screens/export_ids/export_ids_screen.dart';
+import 'package:my_ids/screens/import_ids/import_ids_screen.dart';
 import 'package:my_ids/screens/password_generator/password_generator_screen.dart';
 import 'package:my_ids/screens/settings/settings_screen.dart';
 import 'package:my_ids/screens/update_master_code/update_master_code_screen.dart';
@@ -128,6 +130,50 @@ class _ProfileScreenState extends State<ProfileScreen> {
               contentPadding: const EdgeInsets.all(0),
               title: Text(
                 S.of(context).passwordGenerator,
+                style: TextStyle(
+                  fontSize: 18.0,
+                ),
+              ),
+              trailing: Icon(
+                Icons.keyboard_arrow_right,
+                color: Colors.black,
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            ListTile(
+              onTap: () =>
+                  Navigator.of(context).pushNamed(ImportIdsScreen.routeName),
+              leading: Icon(
+                Icons.import_export,
+                color: Theme.of(context).primaryColor,
+              ),
+              contentPadding: const EdgeInsets.all(0),
+              title: Text(
+                S.of(context).importIds,
+                style: TextStyle(
+                  fontSize: 18.0,
+                ),
+              ),
+              trailing: Icon(
+                Icons.keyboard_arrow_right,
+                color: Colors.black,
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            ListTile(
+              onTap: () =>
+                  Navigator.of(context).pushNamed(ExportIdsScreen.routeName),
+              leading: Icon(
+                Icons.import_export,
+                color: Theme.of(context).primaryColor,
+              ),
+              contentPadding: const EdgeInsets.all(0),
+              title: Text(
+                S.of(context).exportIds,
                 style: TextStyle(
                   fontSize: 18.0,
                 ),

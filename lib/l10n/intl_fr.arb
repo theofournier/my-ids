@@ -69,5 +69,13 @@
   "numbers": "Nombres",
   "lowercase": "Minuscule",
   "uppercase": "Majuscule",
-  "symbolsInfo": "@#=+!£$%&?[](){}"
+  "symbolsInfo": "@#=+!£$%&?[](){}",
+  "importIds": "Importer IDs",
+  "exportIds": "Exporter IDs",
+  "all": "Tous",
+  "none": "Aucun",
+  "import": "Importer",
+  "export": "Exporter",
+  "chooseFile": "Choisir un fichier",
+  "successful": "Succès"
 }

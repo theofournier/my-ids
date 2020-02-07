@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:my_ids/screens/auth/login_screen.dart';
 import 'package:my_ids/screens/auth/register_screen.dart';
 import 'package:my_ids/screens/edit_id/edit_id_screen.dart';
+import 'package:my_ids/screens/export_ids/export_ids_screen.dart';
 import 'package:my_ids/screens/home/home_screen.dart';
 import 'package:my_ids/screens/id/id_screen.dart';
 import 'package:my_ids/screens/ids/ids_screen.dart';
+import 'package:my_ids/screens/import_ids/import_ids_screen.dart';
 import 'package:my_ids/screens/password_generator/password_generator_screen.dart';
 import 'package:my_ids/screens/profile/profile_screen.dart';
 import 'package:my_ids/screens/settings/settings_screen.dart';
@@ -23,4 +25,6 @@ final routes = <String, WidgetBuilder> {
   LoginScreen.routeName: (ctx) => LoginScreen(),
   UpdateMasterCodeScreen.routeName: (ctx) => UpdateMasterCodeScreen(),
   PasswordGeneratorScreen.routeName: (ctx) => PasswordGeneratorScreen(),
+  ImportIdsScreen.routeName: (ctx) => ImportIdsScreen(),
+  ExportIdsScreen.routeName: (ctx) => ExportIdsScreen(),
 };

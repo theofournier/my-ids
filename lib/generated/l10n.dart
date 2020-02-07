@@ -660,6 +660,78 @@ class S {
   }
 
   // skipped getter for the 'symbolsInfo' key
+
+  String get importIds {
+    return Intl.message(
+      'Import IDs',
+      name: 'importIds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get exportIds {
+    return Intl.message(
+      'Export IDs',
+      name: 'exportIds',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get all {
+    return Intl.message(
+      'All',
+      name: 'all',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get none {
+    return Intl.message(
+      'None',
+      name: 'none',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get import {
+    return Intl.message(
+      'Import',
+      name: 'import',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get export {
+    return Intl.message(
+      'Export',
+      name: 'export',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get chooseFile {
+    return Intl.message(
+      'Choose a file',
+      name: 'chooseFile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get successful {
+    return Intl.message(
+      'Successful',
+      name: 'successful',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
