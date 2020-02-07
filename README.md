@@ -92,6 +92,7 @@ All data are encrypted and saved locally in the device.
 
 - Enable or disable biometric authentication
 - Update your master code
+- Password Generator : generate a password by defining the length and other options. Using Rive for smile animation.
 
 
 ## Folder Structure
@@ -119,6 +120,13 @@ Install plugin [Flutter Intl](https://plugins.jetbrains.com/plugin/13666-flutter
 Generation of language file and easily using it.
 
 
+## Rive and Flutter
+In the Password Generator screen, there is a smile animation with the length slider. 
+
+This animation is created with [Rive](https://docs.rive.app/) and imported in Flutter.
+
+The smile artboard can be found here : [Smile Preview](https://rive.app/a/theofournier/files/flare/smile/preview).
+
 ## Dependencies
 
 - [Provider](https://pub.dev/packages/provider) : Global state management
@@ -133,5 +141,6 @@ Generation of language file and easily using it.
 - [Firebase Core](https://pub.dev/packages/firebase_core) : Firebase Core API
 - [Firebase Analytics](https://pub.dev/packages/firebase_analytics) : Use Google Analytics for Firebase API
 - [Firebase Crashlytics](https://pub.dev/packages/firebase_crashlytics) : Use Firebase Crashlytics Service
+- [Flare Flutter](https://pub.dev/packages/flare_flutter) : Flare animation on Flutter
 
 
