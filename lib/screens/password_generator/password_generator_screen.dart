@@ -33,7 +33,7 @@ class PasswordGeneratorScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+          padding: const EdgeInsets.only(bottom: 20.0, left: 30.0, right: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
