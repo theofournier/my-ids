@@ -58,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "idRemoved" : MessageLookupByLibrary.simpleMessage("ID removed"),
     "idUpdated" : MessageLookupByLibrary.simpleMessage("ID updated!"),
     "import" : MessageLookupByLibrary.simpleMessage("Import"),
+    "importExportIds" : MessageLookupByLibrary.simpleMessage("Import / Export IDs"),
     "importIds" : MessageLookupByLibrary.simpleMessage("Import IDs"),
     "isRequired" : MessageLookupByLibrary.simpleMessage("is required"),
     "length" : MessageLookupByLibrary.simpleMessage("Length"),

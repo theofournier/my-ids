@@ -121,8 +121,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               height: 20,
             ),
             ListTile(
-              onTap: () =>
-                  Navigator.of(context).pushNamed(PasswordGeneratorScreen.routeName),
+              onTap: () => Navigator.of(context)
+                  .pushNamed(PasswordGeneratorScreen.routeName),
               leading: Icon(
                 Icons.vpn_key,
                 color: Theme.of(context).primaryColor,
@@ -143,37 +143,53 @@ class _ProfileScreenState extends State<ProfileScreen> {
               height: 20,
             ),
             ListTile(
-              onTap: () =>
-                  Navigator.of(context).pushNamed(ImportIdsScreen.routeName),
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (ctx) => SimpleDialog(
+                    title: Text(
+                      S.of(context).importExportIds,
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                        fontSize: 20,
+                        fontFamily: 'OpenSans',
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    children: <Widget>[
+                      SizedBox(height: 10,),
+                      SimpleDialogOption(
+                        onPressed: () => Navigator.of(context)
+                            .popAndPushNamed(ImportIdsScreen.routeName),
+                        child: Text(
+                          S.of(context).importIds,
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10,),
+                      SimpleDialogOption(
+                        onPressed: () => Navigator.of(context)
+                            .popAndPushNamed(ExportIdsScreen.routeName),
+                        child: Text(
+                          S.of(context).exportIds,
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
               leading: Icon(
                 Icons.import_export,
                 color: Theme.of(context).primaryColor,
               ),
               contentPadding: const EdgeInsets.all(0),
               title: Text(
-                S.of(context).importIds,
-                style: TextStyle(
-                  fontSize: 18.0,
-                ),
-              ),
-              trailing: Icon(
-                Icons.keyboard_arrow_right,
-                color: Colors.black,
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            ListTile(
-              onTap: () =>
-                  Navigator.of(context).pushNamed(ExportIdsScreen.routeName),
-              leading: Icon(
-                Icons.import_export,
-                color: Theme.of(context).primaryColor,
-              ),
-              contentPadding: const EdgeInsets.all(0),
-              title: Text(
-                S.of(context).exportIds,
+                S.of(context).importExportIds,
                 style: TextStyle(
                   fontSize: 18.0,
                 ),
