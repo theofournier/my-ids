@@ -1,9 +1,13 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:downloads_path_provider/downloads_path_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:my_ids/models/id_model.dart';
-import 'package:my_ids/utils/data_example.dart';
 import 'package:my_ids/utils/hive_keys.dart';
 import 'package:my_ids/utils/utils.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:uuid/uuid.dart';
 
 class IdsProvider with ChangeNotifier {
@@ -79,5 +83,21 @@ class IdsProvider with ChangeNotifier {
     await Hive.box(HiveKeys.idsBoxName).put(HiveKeys.idsKey, _ids);
     notifyListeners();
     return index;
+  }
+
+  Future<bool> exportIds(List<String> uids) async{
+    if(uids != null && uids.isNotEmpty) {
+      try {
+        String json = jsonEncode(
+            uids.map((uid) => _ids.firstWhere((id) => id.uid == uid)).toList());
+        File file = await Utils.writeFile(await Utils.getLocalFile("${(await DownloadsPathProvider.downloadsDirectory).path}/${"my_ids_exporting.json"}"), json);
+        print(file);
+        return true;
+      } catch (e) {
+        print(e);
+        return false;
+      }
+    }
+    return false;
   }
 }

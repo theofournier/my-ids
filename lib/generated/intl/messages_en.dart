@@ -48,6 +48,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "errorMasterCodeWrong" : MessageLookupByLibrary.simpleMessage("Wrong master code"),
     "export" : MessageLookupByLibrary.simpleMessage("Export"),
     "exportIds" : MessageLookupByLibrary.simpleMessage("Export IDs"),
+    "exportIdsError" : MessageLookupByLibrary.simpleMessage("Error while exporting IDs"),
+    "exportIdsSuccess" : MessageLookupByLibrary.simpleMessage("IDs successfully exported in download folder"),
     "firstEnterMasterCode" : MessageLookupByLibrary.simpleMessage("First, enter your master code"),
     "generate" : MessageLookupByLibrary.simpleMessage("Generate"),
     "homeText" : MessageLookupByLibrary.simpleMessage("Mes IDs vous permet de sauvegarder en local sur votre portable des identifiants, des mots de passes ainsi que des notes et de leur assigner une couleur"),

@@ -90,7 +90,7 @@ class MyApp extends StatelessWidget {
           theme: Theme.themeData,
           onGenerateTitle: (ctx) => S.of(ctx).appTitle,
           routes: Routes.routes,
-          home: HomeScreen(),/*Consumer<AuthProvider>(
+          home: ExportIdsScreen(),/*Consumer<AuthProvider>(
             builder: (ctx, authProvider, _) {
               if (authProvider.isAuth) {
                 return HomeScreen();

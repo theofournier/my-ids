@@ -1,7 +1,9 @@
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:my_ids/generated/l10n.dart';
 import 'package:my_ids/models/id_model.dart';
 import 'package:my_ids/providers/ids_provider.dart';
+import 'package:my_ids/widgets/error_dialog.dart';
 import 'package:provider/provider.dart';
 
 class ExportIdsScreen extends StatefulWidget {
@@ -155,7 +157,18 @@ class _ExportIdsScreenState extends State<ExportIdsScreen> {
                       color: Colors.white,
                     ),
                   ),
-                  onPressed: () => print("EXPORT"),
+                  onPressed: () async {
+                    bool res = await Provider.of<IdsProvider>(context, listen: false)
+                        .exportIds(_selectedUids);
+                    if(res){
+                      Flushbar(
+                        message: S.of(context).exportIdsSuccess,
+                        duration: Duration(seconds: 3),
+                      )..show(context);
+                    } else {
+                      ErrorDialog(context: context, message: S.of(context).exportIdsError).showErrorDialog();
+                    }
+                  },
                   padding: const EdgeInsets.symmetric(
                       vertical: 12.0, horizontal: 32.0),
                   color: Theme.of(context).accentColor,

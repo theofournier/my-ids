@@ -1,8 +1,12 @@
+import 'dart:io';
 import 'dart:math';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:my_ids/generated/l10n.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class Utils {
   static Future<void> sleep(int seconds) {
@@ -27,7 +31,8 @@ class Utils {
     return false;
   }
 
-  static void undoFlushbar(BuildContext context, String message, Function onUndo){
+  static void undoFlushbar(
+      BuildContext context, String message, Function onUndo) {
     Flushbar flushbar;
     flushbar = Flushbar(
       message: message,
@@ -42,9 +47,8 @@ class Utils {
         ),
       ),
     )..show(context).then((result) {
-      if (result ?? false)
-        onUndo();
-    });
+        if (result ?? false) onUndo();
+      });
   }
 
   static bool isMasterCodeValid(String value) {
@@ -54,7 +58,6 @@ class Utils {
 
   static String generatePassword(bool _isWithLowercase, bool _isWithUppercase,
       bool _isWithNumbers, bool _isWithSymbols, int _numberCharPassword) {
-
     //Define the allowed chars to use in the password
     String _lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
     String _upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -83,5 +86,39 @@ class Utils {
     }
 
     return _result;
+  }
+
+  static Future<String> pickFilePath({String ext}) async {
+    if (ext != null && ext.isNotEmpty) {
+      return await FilePicker.getFilePath(
+          type: FileType.CUSTOM, fileExtension: ext);
+    }
+    return await FilePicker.getFilePath(type: FileType.ANY);
+  }
+
+  static Future<String> getLocalPath() async {
+    final directory = await getExternalStorageDirectory();
+    return directory.path;
+  }
+
+  static Future<File> getLocalFile(String localPath) async {
+    if ((await PermissionHandler()
+            .checkPermissionStatus(PermissionGroup.storage)) !=
+        PermissionStatus.granted) {
+      await PermissionHandler().requestPermissions([PermissionGroup.storage]);
+    }
+    return File(localPath);
+  }
+
+  static Future<File> writeFile(File localFile, String text) async {
+    return localFile.writeAsString('$text');
+  }
+
+  Future<String> readFile(File localFile) async {
+    try {
+      return await localFile.readAsString();
+    } catch (e) {
+      return "";
+    }
   }
 }

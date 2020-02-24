@@ -72,6 +72,8 @@
   "symbolsInfo": "@#=+!£$%&?[](){}",
   "importIds": "Importer IDs",
   "exportIds": "Exporter IDs",
+  "exportIdsSuccess": "IDs exportés dans le dossier Téléchargement",
+  "exportIdsError": "Erreur lors de l'export des IDs",
   "importExportIds": "Importer / Exporter IDs",
   "all": "Tous",
   "none": "Aucun",

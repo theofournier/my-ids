@@ -679,6 +679,24 @@ class S {
     );
   }
 
+  String get exportIdsSuccess {
+    return Intl.message(
+      'IDs successfully exported in download folder',
+      name: 'exportIdsSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get exportIdsError {
+    return Intl.message(
+      'Error while exporting IDs',
+      name: 'exportIdsError',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get importExportIds {
     return Intl.message(
       'Import / Export IDs',
