@@ -157,7 +157,7 @@ class _ExportIdsScreenState extends State<ExportIdsScreen> {
                       color: Colors.white,
                     ),
                   ),
-                  onPressed: () async {
+                  onPressed: _selectedUids.isEmpty ? null : () async {
                     bool res = await Provider.of<IdsProvider>(context, listen: false)
                         .exportIds(_selectedUids);
                     if(res){
