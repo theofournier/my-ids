@@ -670,6 +670,51 @@ class S {
     );
   }
 
+  String get selectFile {
+    return Intl.message(
+      'Select a file',
+      name: 'selectFile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get importIdsSuccess {
+    return Intl.message(
+      'IDs successfully imported',
+      name: 'importIdsSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get importIdsError {
+    return Intl.message(
+      'Error while importing IDs',
+      name: 'importIdsError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get importIdsErrorExists {
+    return Intl.message(
+      'IDs already exist',
+      name: 'importIdsErrorExists',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get importIdsFile {
+    return Intl.message(
+      'File',
+      name: 'importIdsFile',
+      desc: '',
+      args: [],
+    );
+  }
+
   String get exportIds {
     return Intl.message(
       'Export IDs',

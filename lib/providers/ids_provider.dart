@@ -53,7 +53,7 @@ class IdsProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<String> addId(IdModel data) async {
+  Future<String> newId(IdModel data) async {
     data.uid = Uuid().v4();
     data.createdAt = DateTime.now();
     data.updatedAt = DateTime.now();
@@ -67,6 +67,26 @@ class IdsProvider with ChangeNotifier {
     _ids.insert(index, data);
     await Hive.box(HiveKeys.idsBoxName).put(HiveKeys.idsKey, _ids);
     notifyListeners();
+  }
+
+  Future<List<IdModel>> addMultipleIds(List<IdModel> ids) async {
+    await fetchIds();
+    List<IdModel> temps = [];
+    for(int i = 0; i < ids.length; i++){
+      try{
+        IdModel temp = _ids.firstWhere((id) => id.uid == ids[i].uid, orElse: () => null);
+        if(temp != null){
+          temps.add(temp);
+        } else {
+          _ids.add(ids[i]);
+        }
+      } catch(e){
+        print(e);
+      }
+    }
+    await Hive.box(HiveKeys.idsBoxName).put(HiveKeys.idsKey, _ids);
+    notifyListeners();
+    return temps;
   }
 
   Future<void> updateId(IdModel data) async {
@@ -99,5 +119,20 @@ class IdsProvider with ChangeNotifier {
       }
     }
     return false;
+  }
+
+  Future<List<IdModel>> importIds(String filePath) async{
+    if(filePath != null && filePath.isNotEmpty) {
+      try {
+        File file = await Utils.getLocalFile(filePath);
+        String contents = await file.readAsString();
+        List<dynamic> json = jsonDecode(contents);
+        return json.map((id) => IdModel.fromJson(id)).toList();
+      } catch (e) {
+        print(e);
+        return null;
+      }
+    }
+    return null;
   }
 }

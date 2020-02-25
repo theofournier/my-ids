@@ -18,6 +18,7 @@ import 'package:my_ids/screens/auth/login_screen.dart';
 import 'package:my_ids/screens/auth/register_screen.dart';
 import 'package:my_ids/screens/export_ids/export_ids_screen.dart';
 import 'package:my_ids/screens/home/home_screen.dart';
+import 'package:my_ids/screens/import_ids/import_ids_screen.dart';
 import 'package:my_ids/screens/password_generator/password_generator_screen.dart';
 import 'package:my_ids/screens/splash/splash_screen.dart';
 import 'package:my_ids/theme.dart' as Theme;
@@ -90,7 +91,7 @@ class MyApp extends StatelessWidget {
           theme: Theme.themeData,
           onGenerateTitle: (ctx) => S.of(ctx).appTitle,
           routes: Routes.routes,
-          home: ExportIdsScreen(),/*Consumer<AuthProvider>(
+          home: Consumer<AuthProvider>(
             builder: (ctx, authProvider, _) {
               if (authProvider.isAuth) {
                 return HomeScreen();
@@ -108,7 +109,7 @@ class MyApp extends StatelessWidget {
                 },
               );
             },
-          ),*/
+          ),
         ),
       ),
     );

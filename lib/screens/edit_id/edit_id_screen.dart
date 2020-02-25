@@ -70,7 +70,7 @@ class _EditIdScreenState extends State<EditIdScreen> {
       await Provider.of<IdsProvider>(context, listen: false).updateId(_data);
       flushbarMessage = S.of(context).idUpdated;
     } else {
-      uid = await Provider.of<IdsProvider>(context, listen: false).addId(_data);
+      uid = await Provider.of<IdsProvider>(context, listen: false).newId(_data);
       flushbarMessage = S.of(context).idAdded;
     }
     setState(() {
